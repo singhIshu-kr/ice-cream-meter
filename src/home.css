@@ -1,0 +1,58 @@
+/* .wrapper {width: 360px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    background:#bd2e2e;
+} */
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 70px auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  font-family: 'Helvetica Neue', Arial, Sans-Serif;
+}
+
+.form input,
+.form button{
+  width: 95%;
+  height: 3rem;
+  background: #e2d9d929;
+  margin: 0 0 1.5rem;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #b1abab;
+}
+
+
+#submit{
+  color: #FFFFFF;
+  background: #009688;
+  font-size: 1rem !important;
+}
+
+::placeholder {
+    opacity: 0.6;
+}
+
+#teamLink{
+  cursor: pointer;
+  color:#105854;
+}
+
+.formContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invalid-credentials{
+  color: red;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,271 @@
+body {
+  font-family: 'Cinzel', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.appHeader ,#party{
+  color:#455A64;
+  text-align: center;
+  font-stretch: ultra-expanded;
+  font-size:3rem;
+}
+
+#party{
+  font-style: italic;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.primary{
+  background: #009688;
+  color: #000000;
+}
+.container {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+}
+
+.overflow-model {
+  display: none;
+  padding-top:100px;
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  width:100%;
+  height:100%;
+  overflow:auto;
+  background-color:rgb(0,0,0);
+  background-color:rgba(0, 0, 0, 0.67);
+      z-index: 1;
+}
+
+.popupContent{
+  margin:7% auto;
+  color:brown;
+  animation: animatezoom 0.6s;
+  background-image: url("./images/party2.gif");
+  border: 3px solid brown;
+  position:relative;
+  padding:0;
+  outline:0;
+  width:600px;
+  height: 400px;
+  border-radius: 7px;
+}
+
+.memberScoreActionBtns .fa{
+  font-size: 1.3rem;
+}
+
+.memberScoreActionBtns .fa-plus-square{
+  margin-right: 1rem;
+  color: #000000;
+}
+
+.memberScoreActionBtns .fa-minus-square{
+  margin-right: 1rem;
+  color: #ff5252;
+}
+
+.animateZoom {
+  animation:animatezoom 0.6s;
+}
+
+#submit {
+  line-height: 20px;
+}
+
+#submit{
+  /* background: #009688; */
+  color: #fff;
+  box-shadow: inset -1px -1px 3px #999;
+  -moz-box-shadow: inset -1px -1px 3px #999;
+  -webkit-box-shadow: inset -1px -1px 3px #999;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;    
+  font-weight: bold;
+  animation: fadeIn 2s;    
+  margin-left: 1%;
+  padding: 7px 13px;
+  font-size: 0.8rem;
+}
+
+.cancelButton {
+  line-height: 5px;
+  font-size: 25px;
+  color:#330026;
+  width: 40%;
+  margin-top: 30%;
+  padding: 20px;
+  background-color:rgba(116, 53, 1, 0.603);
+  border-radius: 20px;
+  animation: fadeIn 2s;
+}
+
+#name, #id{
+  width: 15%;
+  height: 36px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border: 1px solid #a3a3a3;
+  outline: none;
+  color: #333;
+  background: rgb(255, 253, 252);
+  font-size: 1rem;
+  padding-left: 0.8rem;
+  margin-left: 10px;
+}
+
+.column {
+  display: inline-block;
+}
+
+#memberName{
+  font-size: 1.3rem;
+  margin-left: 0px;
+  margin-right: 30px;
+  margin-top: 0rem;
+  margin-bottom: 0.8rem;
+}
+.teamMembersData{
+  display: flex;
+}
+.addMember form{
+  display: flex;
+  justify-content: center;
+}
+
+::placeholder {
+    opacity: 0.7;
+}
+
+.member {
+    width: 250px;
+    height: 85px;
+    border: 1px solid #a9a9a9;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.membersBlock{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.3rem;
+}
+
+.memberInfo{
+  width: 63%;
+  margin: 1rem auto 1rem;
+  display: block;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.memberScore{
+   justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1.3rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20%;
+    color: #fff;
+    /* background-color: #009688; */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.partyPending{
+    width: 250px;
+    height: 500px;
+    background-color: #fff;
+    margin-top: 1.3rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.partyPending h2{
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    /* color: #00838F; */
+}
+
+.partyPendingList ul{
+  margin: 0;
+  padding: 0;
+}
+
+.partyPendingList ul li{
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  border-bottom: 1px solid #a9a9a9;
+  margin-bottom: 0.8rem;
+}
+
+.resetScore{
+  padding: 0.5rem 1rem;
+  background-color: #ff5252;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  width: 30%;
+}
+
+.memberDelete{
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 1.3rem;
+}
+
+.teamMembersData{
+  width: 80%;
+  height: 100%;
+}
+
+#signOut{
+  color: #fff;
+  box-shadow: inset -1px -1px 3px #999;
+  -moz-box-shadow: inset -1px -1px 3px #999;
+  background: #009688;
+  border-radius: 4px;
+  font-weight: bold;
+  animation: fadeIn 2s;    
+  width: 130px;
+  padding: 7px 13px;
+  font-size: 0.9rem;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+}
+
+.signout-icon{
+  margin-left: 10px;
+}
+
+.teamName {
+    color: #009688;
+    font-weight: bold;
+    width: 330px;
+    font-size: 1.9rem;
+    position: absolute;
+    top: 1%;
+}

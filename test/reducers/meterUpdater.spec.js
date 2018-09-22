@@ -10,12 +10,12 @@ describe('reducer',()=>{
     expect(meterUpdater({ team: [] }, {
       type: types.SET_TEAM,
       payload: []
-    })).toEqual({
-      team:[]
-    })
+    })).toEqual(
+      { "idInUse": false, "team": undefined, "teamName": undefined }
+    )
   })
 
   it('should return initial state as default', () => {
-    expect(meterUpdater(undefined, { type: types.ABC })).toEqual({ "idInUse": false,team:[]})
+    expect(meterUpdater(undefined, { type: types.ABC })).toEqual({ "idInUse": false, "team": [], "teamName": null })
   });
 })

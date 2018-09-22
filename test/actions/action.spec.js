@@ -112,7 +112,7 @@ describe('Should dispatch all the actions', () => {
   describe('Add Member', () => {
     it('should send name and get the updated team', (done) => {
       const dispatch = td.function('dispatch');
-      const body = { name: "ishu",id:"20197",teamId:"1233" };
+      const body = { name: "ishu",teamId:"1233" };
       const expectedAction = {
         type: "SET_TEAM",
         payload: { team: [{ name: "ishu" }] }
@@ -124,7 +124,7 @@ describe('Should dispatch all the actions', () => {
         return Promise.resolve([200, { team: [{ name: "ishu" }] }])
       });
 
-      actions.addMember(dispatch, "ishu","20197","1233").then(() => {
+      actions.addMember(dispatch, "ishu","1233").then(() => {
         td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })

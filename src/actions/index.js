@@ -30,7 +30,6 @@ export const resetScore = (dispatch, id, teamId) => {
 
 export const addMember = (dispatch, name,teamId) => {
   let body = { name,teamId};
-  console.log(teamId)
   return axios.post('addMember',body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') }}).then((res) => {
     if (res.status === 200) {
       return getSavedState(dispatch,teamId);

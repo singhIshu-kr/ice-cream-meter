@@ -14,12 +14,10 @@ describe('components', () => {
       const handleSubmit = td.function();
       const newMember = mount(<NewMember onSubmit = {handleSubmit} teamId="magneto"/>);
       const name = newMember.find('#name');
-      const id = newMember.find('#id');
       const submit = newMember.find('#submit');
       name.simulate('change',{target: {value: "akriti"}})
-      id.simulate('change', { target: { value: "20197" } })
       submit.simulate("click")
-      td.verify(handleSubmit('akriti',"20197","magneto"))
+      td.verify(handleSubmit('akriti',"magneto"))
       expect(name.exists()).toBeTruthy();
       expect(submit.exists()).toBeTruthy();
     })

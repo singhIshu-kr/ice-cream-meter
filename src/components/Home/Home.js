@@ -30,7 +30,8 @@ class HomePage extends React.Component {
       <div class="form" >
         <div id="addTeam"><AddTeam addTeamAndPassword={addTeam} isLoggedIn={isLoggedIn} /></div>
         <a onClick={() => toggleLogin()} id="teamLink">Go to show team page</a>
-      </div>
+        </div>
+        <ul className="juicer-feed" data-feed-id="ishu-superstar"><h1 class="referral"><a href="https://www.juicer.io">Powered by Juicer</a></h1></ul>
       </div>
     )
   }

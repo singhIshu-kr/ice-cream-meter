@@ -51,7 +51,8 @@ export const removeMember = (dispatch, id, teamId) => {
 }
 
 export const getSavedState = (dispatch,teamId) => {
-  return axios.get(`/read/${teamId}`, {headers: {accesstoken:cookie.load('accessToken'),email:cookie.load('email')}}).then((response) => {
+  return axios.get(`/read/${teamId}`, {headers: {accesstoken:cookie.load('accessToken'),email:cookie.load('email')}})
+  .then((response) => {
     return dispatch(
       {
         type: "SET_TEAM",
@@ -104,8 +105,8 @@ export const toggleLogin = () => {
 }
 
 export const signOutTeam = (dispatch,id) => {
-  return axios.get('/isLoggedIn',{ headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
-    if (res.status === 204) {
+  return axios.post('/signOutTeam',{},{ headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if (res.status === 200) {
       cookie.remove("email", { path: "/" });
       cookie.remove("accessToken", { path: "/" });
       return getSavedState(dispatch, id);

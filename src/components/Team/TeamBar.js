@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom';
 
 class TeamBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props),
+    this.signOutTeam=this.signOutTeam.bind(this)
   }
 
   getPartyPendingList(memberList){
@@ -16,7 +17,7 @@ class TeamBar extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchTeamInfo, email} = this.props;
+    const { fetchTeamInfo, email, signOutTeam} = this.props;
     email && fetchTeamInfo(email);
   }
 
@@ -34,7 +35,7 @@ class TeamBar extends React.Component {
       <div>
         <h1 className="teamName">{teamName}</h1>
       <NewMember onSubmit={addMember} teamId={email} idInUse={idInUse}/>
-        <button id="signOut" onClick={()=>{this.signOutTeam()}}>Sign Out<i class="fa fa-sign-out signout-icon" aria-hidden="true"></i></button>
+        <button id="signOut" onClick={this.signOutTeam}>Sign Out<i class="fa fa-sign-out signout-icon" aria-hidden="true"></i></button>
       <div className="container">
         <PartyPending pendingList={this.getPartyPendingList(teamInfo)|| []} resetScore={resetScore} />
         <div className="teamMembersData">

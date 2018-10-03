@@ -18,6 +18,7 @@ class HomePage extends React.Component {
         {this.props.isLoggedIn && <Redirect to={{ pathname: '/team' }} />}
         <div class="form" >
           <div id="login"><Login loginTeam={loginTeam} isLoggedIn={isLoggedIn} invalidCredentials={invalidCredentials}/></div>
+          <p>or</p>
           <a href onClick={(e) => toggleLogin()} id="teamLink">Don't have an account?</a>
         </div>
         </div>
@@ -28,7 +29,8 @@ class HomePage extends React.Component {
       <div className="formContainer">
       <div class="form" >
         <div id="addTeam"><AddTeam addTeamAndPassword={addTeam} isLoggedIn={isLoggedIn} /></div>
-        <a onClick={() => toggleLogin()} id="teamLink">Go to show team page</a>
+        <p>or</p>
+        <a onClick={() => toggleLogin()} id="teamLink">Go to Login page</a>
         </div>
       </div>
     )

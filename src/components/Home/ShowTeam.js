@@ -55,7 +55,7 @@ class ShowTeamForm extends React.Component {
           <div >
             <input type="text" id="teamName" placeholder="Team Email" value={this.state.email} onChange={this.handleChange} required />
             <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}  required />
-            <input id="submit" type="submit" value="Go to Team" onClick={this.handleSubmit} />
+            <input id="submit" type="submit" value="Go to Ice-cream Meter" onClick={this.handleSubmit} />
           </div>
         </label>
       </div>

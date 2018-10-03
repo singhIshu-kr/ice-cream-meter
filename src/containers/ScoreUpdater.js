@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return ({
     teamInfo: state.meterUpdaters.team,
     email: cookie.load("email"),
-    idInUse: state.meterUpdaters.idInUse,
+    nameInUse: state.meterUpdaters.nameInUse,
     teamName: state.meterUpdaters.teamName
   })
 }

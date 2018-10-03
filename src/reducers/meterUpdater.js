@@ -1,10 +1,9 @@
-const meterUpdater = (state = { team: [], idInUse: false, teamName: null}, action) => {
+const meterUpdater = (state = { team: [], nameInUse: false, teamName: null}, action) => {
   switch (action.type) {
     case 'SET_TEAM':
-    console.log(action);
       return {
         ...state,
-        idInUse:false,
+        nameInUse:false,
         team: action.payload.memberInfo,
         teamName:action.payload.name
       }
@@ -15,10 +14,10 @@ const meterUpdater = (state = { team: [], idInUse: false, teamName: null}, actio
         email:undefined
     }
 
-    case 'ID_IN_USE':
+    case 'NAME_IN_USE':
       return {
         ...state,
-        idInUse:true
+        nameInUse:true
       }
 
     default:

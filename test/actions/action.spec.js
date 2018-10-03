@@ -149,6 +149,19 @@ describe('Should dispatch all the actions', () => {
         done();
       })
     });
+
+    it('should dispatch name in use action on error', (done) => {
+      const dispatch = td.function('dispatch');
+      const expectedAction = {
+        type: "NAME_IN_USE"
+      }
+      const body = { name: "ishu" };
+      mockAdapter.onPost('/addMember', body).reply(400);
+      actions.addMember(dispatch, "ishu").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })   
+    });
   })
 
   describe('Remove Member', () => {
@@ -276,6 +289,84 @@ describe('Should dispatch all the actions', () => {
       }
       expect(actions.toggleLogin()).toEqual(expectedAction);
       done()
+    });
+  });
+
+  describe('login Team', () => {
+    it('should dispatch login team action when response is 200', (done) => {
+      const expectedAction = {
+        type: "LOGIN_TEAM"
+      }
+      const body = {
+        email:"abcd@gmail.com",
+        password:"abcd"
+      }
+      mockAdapter.onPost('/loginTeam',body).reply(() => {
+        return Promise.resolve([200])
+      });
+      
+      const dispatch = td.function();
+      actions.loginTeam(dispatch,"abcd@gmail.com","abcd").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1})
+        done();
+      }) 
+    });
+
+    it('should dispatch invalid credentials action on error response', (done) => {
+      const expectedAction = {
+        type: "INVALID_CREDENTIALS"
+      }
+      const body = {
+        email: "abcd@gmail.com",
+        password: "abcd"
+      }
+      mockAdapter.onPost('/loginTeam', body).reply(() => {
+        return Promise.resolve([400])
+      });
+
+      const dispatch = td.function();
+      actions.loginTeam(dispatch, "abcd@gmail.com", "abcd").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  });
+
+
+  describe('signout Team', () => {
+    it('should dispatch SET_TEAM action when response is 200', (done) => {
+
+      mockAdapter.onPost('/signOutTeam',{}).reply(() => {
+        return Promise.resolve([200])
+      }).onGet('/read/1233').reply(() => {
+        return Promise.resolve([200, []])
+      })
+      const dispatch = td.function();
+      const expectedAction = {
+        type: "SET_TEAM",
+        payload: []
+      }
+
+      actions.signOutTeam(dispatch,"1233").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  });
+
+  describe('checkLoggedIn', () => {
+    it('should dispatch IS_LOGGED_IN action if response is 204', (done) => {
+      mockAdapter.onGet("/isLoggedIn").reply(()=>{
+        return Promise.resolve([204])
+      })
+      const dispatch = td.function();
+      const expectedAction = {
+        type: "IS_LOGGED_IN"
+      }
+      actions.checkLoggedIn(dispatch).then(()=>{
+        td.verify(dispatch(expectedAction),{times:1})
+        done();
+      })
     });
   });
 })

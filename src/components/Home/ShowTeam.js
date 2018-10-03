@@ -9,6 +9,7 @@ class ShowTeamForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   handleChange(event) {
@@ -17,6 +18,12 @@ class ShowTeamForm extends React.Component {
 
   setPassword(event) {
     this.setState({ password: event.target.value });
+  }
+
+  submitForm(event) {
+    if (event.key == "Enter") {
+      document.getElementById("submit").click();
+    }
   }
 
   handleSubmit() {
@@ -47,7 +54,7 @@ class ShowTeamForm extends React.Component {
         <label >
           <div >
             <input type="text" id="teamName" placeholder="Team Email" value={this.state.email} onChange={this.handleChange} required />
-            <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} required />
+            <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}  required />
             <input id="submit" type="submit" value="Go to Team" onClick={this.handleSubmit} />
           </div>
         </label>

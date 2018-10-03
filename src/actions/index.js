@@ -36,7 +36,7 @@ export const addMember = (dispatch, name,teamId) => {
     }
   }).catch(()=>{
     return dispatch({
-      type:"ID_IN_USE"
+      type:"NAME_IN_USE"
     })
   })
 }

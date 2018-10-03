@@ -7,7 +7,6 @@ class HomePage extends React.Component {
 
   componentWillMount(){
     const {checkLoggedIn} = this.props;
-    console.log(this.props.isLoggedIn)
     checkLoggedIn();
   }
 
@@ -25,7 +24,7 @@ class HomePage extends React.Component {
       )
     }
 
-    return (     
+    return (
       <div className="formContainer">
       <div class="form" >
         <div id="addTeam"><AddTeam addTeamAndPassword={addTeam} isLoggedIn={isLoggedIn} /></div>

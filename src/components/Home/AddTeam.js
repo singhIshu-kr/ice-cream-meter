@@ -10,6 +10,7 @@ class AddTeamForm extends React.Component {
     this.setPassword = this.setPassword.bind(this);
     this.setEmail = this.setEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
 
@@ -23,6 +24,12 @@ class AddTeamForm extends React.Component {
 
   setEmail(event) {
     this.setState({ email: event.target.value });
+  }
+
+  submitForm(event) {
+    if (event.key == "Enter") {
+      document.getElementById("submit").click();
+    }
   }
 
   handleSubmit(){
@@ -52,7 +59,7 @@ class AddTeamForm extends React.Component {
         <div>
           <input type="text" id="teamName" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} />
             <input type="email" id="email" placeholder="Email" value={this.state.email} onChange={this.setEmail} required/>
-          <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword}  />
+          <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}/>
           <input id="submit" type="submit" value="Submit" onClick={this.handleSubmit} />
         </div>
       </div>

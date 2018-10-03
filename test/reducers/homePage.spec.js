@@ -28,8 +28,36 @@ describe('Home Page Reducer', () => {
     const action = { type: "TOGGLE_LOGIN" };
     const state = { email: "", showLogin: true };
     expect(homePgReducer(state, action)).toEqual({
-      email: "",
-      showLogin: false
+      "email": "",
+      "showLogin": false
+    })
+  });
+
+  it('should return the login team on login action', () => {
+    const action = { type: "LOGIN_TEAM"};
+    const state = { email: "", isLoggedIn: true };
+    expect(homePgReducer(state,action)).toEqual({
+      "email":"",
+      "isLoggedIn":true
+    })
+  });
+
+  it('should return invalid credentials true on invalid credentials', () => {
+    const action = { type: "INVALID_CREDENTIALS" };
+    const state = { email: "", isLoggedIn: true, invalidCredentials:false};
+    expect(homePgReducer(state, action)).toEqual({
+      "email": "",
+      "isLoggedIn": true,
+      "invalidCredentials":true
+    })
+  });
+
+  it('should return is loggedIn true on is loggedIn action ', () => {
+    const action = { type: "IS_LOGGED_IN" };
+    const state = { email: "", isLoggedIn: false};
+    expect(homePgReducer(state, action)).toEqual({
+      "email": "",
+      "isLoggedIn": true
     })
   });
 });

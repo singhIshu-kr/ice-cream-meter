@@ -66,7 +66,7 @@ export const addTeam = (dispatch, name, email, password) => {
   let body = {
     name, email, password
   }
-  return axios.post('addTeam',body).then((res) => {
+  return axios.post('addUser',body).then((res) => {
     if (res.status === 200) {
       cookie.save("email", email, { path: "/" });
       cookie.save("accessToken", res.data, { path: "/" });
@@ -81,7 +81,7 @@ export const loginTeam = (dispatch, email, password) =>{
   let body = {
     email,password
   }
-  return axios.post('loginTeam', body)
+  return axios.post('loginUser', body)
     .then((res) => {
       if (res.status === 200) {
         cookie.save("email",email,{path:"/"});
@@ -105,7 +105,7 @@ export const toggleLogin = () => {
 }
 
 export const signOutTeam = (dispatch,id) => {
-  return axios.post('/signOutTeam',{},{ headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+  return axios.post('/signOutUser',{},{ headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
     if (res.status === 200) {
       cookie.remove("email", { path: "/" });
       cookie.remove("accessToken", { path: "/" });

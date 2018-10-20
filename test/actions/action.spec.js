@@ -392,4 +392,23 @@ describe('Should dispatch all the actions', () => {
       })
     });
   });
+
+  describe('getTeamOfUser', () => {
+    it('should dispatch GET_TEAMS_OF_USER action if the response is 200', (done) => {
+      const expectedAction = {
+        type: "GET_TEAMS_OF_USER",
+        teams: [{ userId: "abcd@gmail.com", teamId: "abcd", role: "ADMIN" }]
+      }
+      const dispatch = td.function();
+
+      mockAdapter.onGet("/myTeams/abcd@gmail.com").reply(() => {
+        return Promise.resolve([200, { allTeamsOfUser: [{userId:"abcd@gmail.com",teamId:"abcd",role: "ADMIN"}] }])
+      })
+
+      actions.getTeamsOfUser(dispatch, "abcd@gmail.com").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  });
 })

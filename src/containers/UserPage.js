@@ -1,10 +1,11 @@
 import { connect } from "react-redux"
 import UserPage from "../components/User/UserPage"
-import {addNewTeam, getTeamListOfUser} from "../actions/index"
-
+import {addNewTeam} from "../actions/index"
+import cookie from 'react-cookies';
 
 const mapStateToProps = (state) => {
   return {
+    userId: cookie.load("email"),
     activeElement : state.userPage.activeElement
   }
 }

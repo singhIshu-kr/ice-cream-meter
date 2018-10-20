@@ -1,9 +1,9 @@
 import React from 'react'
 import NewTeam from './NewTeam'
 
-const Container = ({activeElement, addNewTeam}) => (
+const Container = ({activeElement, addNewTeam, userId}) => (
   <div>
-    <NewTeam activeElement={activeElement} addNewTeam={addNewTeam}/>
+    <NewTeam activeElement={activeElement} addNewTeam={addNewTeam} userId={userId}/>
   </div>
 )
 

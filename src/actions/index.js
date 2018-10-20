@@ -97,7 +97,7 @@ export const loginTeam = (dispatch, email, password) => {
         })
       }
     })
-    .catch((response) => {
+    .catch(() => {
       return dispatch({
         type: "INVALID_CREDENTIALS"
       })
@@ -110,7 +110,7 @@ export const toggleLogin = () => {
   }
 }
 
-export const signOutTeam = (dispatch) => {
+export const signOutTeam = () => {
   return axios.post('/signOutUser', {}, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
     if (res.status === 200) {
       cookie.remove("email", { path: "/" });
@@ -128,3 +128,15 @@ export const checkLoggedIn = (dispatch) => {
     }
   })
 }
+
+export const addNewTeam = (dispatch, userId, teamName) => {
+  let body = { userId, teamName}
+  return axios.post('/newTeam', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if(res.status === 200){
+      return dispatch({
+        type: "TEAM_CREATED"
+      })
+    }
+  })
+}
+

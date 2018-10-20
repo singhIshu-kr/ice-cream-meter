@@ -320,6 +320,7 @@ describe('Should dispatch all the actions', () => {
         email: "abcd@gmail.com",
         password: "abcd"
       }
+
       mockAdapter.onPost('/loginUser', body).reply(() => {
         return Promise.resolve([400])
       });
@@ -333,26 +334,26 @@ describe('Should dispatch all the actions', () => {
   });
 
 
-  describe('signout Team', () => {
-    it('should dispatch SET_TEAM action when response is 200', (done) => {
+  // describe('signout Team', () => {
+  //   it('should dispatch SET_TEAM action when response is 200', (done) => {
 
-      mockAdapter.onPost('/signOutUser',{}).reply(() => {
-        return Promise.resolve([200])
-      }).onGet('/read/1233').reply(() => {
-        return Promise.resolve([200, []])
-      })
-      const dispatch = td.function();
-      const expectedAction = {
-        type: "SET_TEAM",
-        payload: []
-      }
+  //     mockAdapter.onPost('/signOutUser',{}).reply(() => {
+  //       return Promise.resolve([200])
+  //     }).onGet('/read/1233').reply(() => {
+  //       return Promise.resolve([200, []])
+  //     })
+  //     const dispatch = td.function();
+  //     const expectedAction = {
+  //       type: "SET_TEAM",
+  //       payload: []
+  //     }
 
-      actions.signOutTeam(dispatch,"1233").then(() => {
-        td.verify(dispatch(expectedAction), { times: 1 })
-        done();
-      })
-    });
-  });
+  //     actions.signOutTeam(dispatch,"1233").then(() => {
+  //       td.verify(dispatch(expectedAction), { times: 1 })
+  //       done();
+  //     })
+  //   });
+  // });
 
   describe('checkLoggedIn', () => {
     it('should dispatch IS_LOGGED_IN action if response is 204', (done) => {
@@ -365,6 +366,28 @@ describe('Should dispatch all the actions', () => {
       }
       actions.checkLoggedIn(dispatch).then(()=>{
         td.verify(dispatch(expectedAction),{times:1})
+        done();
+      })
+    });
+  });
+
+  describe('addNewTeam', () => {
+    it('should dispatch ADD_NEW_TEAM action if the response is 204', (done) => {
+      const body = {
+        userId: "abcd@gmail.com",
+        teamName: "NewTeam"
+      }
+      const expectedAction = {
+        type: "TEAM_CREATED"
+      }
+      const dispatch = td.function();
+
+      mockAdapter.onPost("/newTeam", body).reply(() => {
+        return Promise.resolve([200])
+      })
+
+      actions.addNewTeam(dispatch, "abcd@gmail.com", "NewTeam").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })
     });

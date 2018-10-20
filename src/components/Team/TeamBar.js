@@ -17,7 +17,7 @@ class TeamBar extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchTeamInfo, email, signOutTeam } = this.props;
+    const { fetchTeamInfo, email } = this.props;
     email && fetchTeamInfo(email);
   }
 

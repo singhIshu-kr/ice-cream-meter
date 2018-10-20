@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-class AddTeamForm extends React.Component {
+class AddUserForm extends React.Component {
   
   constructor(props) {
     super(props);
@@ -34,7 +34,7 @@ class AddTeamForm extends React.Component {
 
   handleSubmit(){
     const {email,password,value} = this.state;
-    this.checkEmptyField(email,password,value) && this.props.addTeamAndPassword(value, email, password)
+    this.checkEmptyField(email,password,value) && this.props.addUserAndPassword(value, email, password)
   }
 
   checkEmptyField(email, password, value) {
@@ -57,7 +57,7 @@ class AddTeamForm extends React.Component {
     return (
       <div>
         <div>
-          <input type="text" id="teamName" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" id="userName" placeholder="User Name" value={this.state.value} onChange={this.handleChange} />
             <input type="email" id="email" placeholder="Email" value={this.state.email} onChange={this.setEmail} required/>
           <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}/>
           <input id="submit" type="submit" value="Submit" onClick={this.handleSubmit} />
@@ -67,4 +67,4 @@ class AddTeamForm extends React.Component {
   }
 }
 
-export default AddTeamForm;
+export default AddUserForm;

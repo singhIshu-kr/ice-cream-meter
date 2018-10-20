@@ -250,7 +250,7 @@ describe('Should dispatch all the actions', () => {
   describe('Add team', () => {
     it('should add team and dispatch email id when status is 200', (done) => {
       const body = { name: "Ishu", password: "1234", email: "abcd@gmail.com" };
-      mockAdapter.onPost('/addTeam', body).reply(() => {
+      mockAdapter.onPost('/addUser', body).reply(() => {
         return Promise.resolve([200])
       })
       const dispatch = td.function();
@@ -258,7 +258,7 @@ describe('Should dispatch all the actions', () => {
         type: "LOGIN_TEAM"
       }
 
-      actions.addTeam(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
+      actions.addUser(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
         td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })
@@ -266,7 +266,7 @@ describe('Should dispatch all the actions', () => {
 
     it('should not dispatch email if the response it not 200', (done) => {
       const body = { name: "Ishu", password: "1234", email: "abcd@gmail.com" };
-      mockAdapter.onPost('/addTeam', body).reply(() => {
+      mockAdapter.onPost('/addUser', body).reply(() => {
         return Promise.resolve([201])
       })
       const dispatch = td.function();
@@ -275,7 +275,7 @@ describe('Should dispatch all the actions', () => {
         email: "abcd@gmail.com"
       }
 
-      actions.addTeam(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
+      actions.addUser(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
         td.verify(dispatch(expectedAction), { times: 0 })
         done();
       })
@@ -301,7 +301,7 @@ describe('Should dispatch all the actions', () => {
         email:"abcd@gmail.com",
         password:"abcd"
       }
-      mockAdapter.onPost('/loginTeam',body).reply(() => {
+      mockAdapter.onPost('/loginUser',body).reply(() => {
         return Promise.resolve([200])
       });
       
@@ -320,7 +320,7 @@ describe('Should dispatch all the actions', () => {
         email: "abcd@gmail.com",
         password: "abcd"
       }
-      mockAdapter.onPost('/loginTeam', body).reply(() => {
+      mockAdapter.onPost('/loginUser', body).reply(() => {
         return Promise.resolve([400])
       });
 
@@ -336,7 +336,7 @@ describe('Should dispatch all the actions', () => {
   describe('signout Team', () => {
     it('should dispatch SET_TEAM action when response is 200', (done) => {
 
-      mockAdapter.onPost('/signOutTeam',{}).reply(() => {
+      mockAdapter.onPost('/signOutUser',{}).reply(() => {
         return Promise.resolve([200])
       }).onGet('/read/1233').reply(() => {
         return Promise.resolve([200, []])

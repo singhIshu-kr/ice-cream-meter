@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-class ShowTeamForm extends React.Component {
+class LoginTeamForm
+ extends React.Component {
 
   constructor(props) {
     super(props)
@@ -53,7 +54,7 @@ class ShowTeamForm extends React.Component {
         {invalidCredentials && <p className="invalid-credentials">Invalid Credentials!</p>}
         <label >
           <div >
-            <input type="text" id="teamName" placeholder="Team Email" value={this.state.email} onChange={this.handleChange} required />
+            <input type="text" id="userName" placeholder="User Email" value={this.state.email} onChange={this.handleChange} required />
             <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}  required />
             <input id="submit" type="submit" value="Go to Ice-cream Meter" onClick={this.handleSubmit} />
           </div>
@@ -63,4 +64,5 @@ class ShowTeamForm extends React.Component {
   }
 }
 
-export default ShowTeamForm;
+export default LoginTeamForm
+;

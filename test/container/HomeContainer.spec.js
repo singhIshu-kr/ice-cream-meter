@@ -29,17 +29,17 @@ describe('HomePage Container', () => {
   describe('map state to props', () => {
     it('should map dispatch to props', () => {
         expect(wrapper.props()).toEqual(expect.objectContaining({
-        addTeam: expect.any(Function)
+        addUser: expect.any(Function)
       }))    
     });
   });
 
   describe('map dispatch to props', () => {
-    it('should call addTeam of actions with dispatch and team info', () => {
-      const stubAddTeam = stub(actions,'addTeam');
-      wrapper.prop('addTeam')("abc","net.com","1234");
-      expect(stubAddTeam.calledOnce).toBeTruthy();
-      expect(stubAddTeam.calledWith(dispatch,"abc", "net.com", "1234")).toBeTruthy();
+    it('should call addUser of actions with dispatch and team info', () => {
+      const stubaddUser = stub(actions,'addUser');
+      wrapper.prop('addUser')("abc","net.com","1234");
+      expect(stubaddUser.calledOnce).toBeTruthy();
+      expect(stubaddUser.calledWith(dispatch,"abc", "net.com", "1234")).toBeTruthy();
     });
 
     it('should dispatch the return value of toggleLogin in action', () => {

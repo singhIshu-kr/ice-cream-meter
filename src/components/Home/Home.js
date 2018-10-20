@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from './ShowTeam';
-import AddTeam from './AddTeam';
+import Login from './LoginUser';
+import AddUser from './AddUser';
 import { Redirect } from 'react-router-dom';
 
 class HomePage extends React.Component {
@@ -11,7 +11,7 @@ class HomePage extends React.Component {
   }
 
   showLoginOrSignUp(){
-    const { addTeam, toggleLogin, showLogin, isLoggedIn, loginTeam, invalidCredentials} = this.props;
+    const { addUser, toggleLogin, showLogin, isLoggedIn, loginTeam, invalidCredentials} = this.props;
     if(showLogin){
       return (
         <div className="formContainer">
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
     return (
       <div className="formContainer">
       <div class="form" >
-        <div id="addTeam"><AddTeam addTeamAndPassword={addTeam} isLoggedIn={isLoggedIn} /></div>
+        <div id="addUser"><AddUser addUserAndPassword={addUser} isLoggedIn={isLoggedIn} /></div>
         <p>or</p>
         <a onClick={() => toggleLogin()} id="teamLink">Go to Login page</a>
         </div>

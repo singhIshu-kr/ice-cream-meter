@@ -1,6 +1,6 @@
 import Home from "../components/Home/Home";
 import { connect } from 'react-redux';
-import {addTeam, toggleLogin, loginTeam, checkLoggedIn} from '../actions/index';
+import {addUser, toggleLogin, loginTeam, checkLoggedIn} from '../actions/index';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     loginTeam:(name,password) => loginTeam(dispatch,name,password),
-    addTeam: (name,email,password) => addTeam(dispatch,name,email,password),
+    addUser: (name,email,password) => addUser(dispatch,name,email,password),
     toggleLogin:() =>  dispatch(toggleLogin()),
     checkLoggedIn:()=> checkLoggedIn(dispatch)
   })

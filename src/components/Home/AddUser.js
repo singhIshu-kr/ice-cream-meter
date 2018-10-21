@@ -52,7 +52,7 @@ class AddUserForm extends React.Component {
   render() {
     const { isLoggedIn } = this.props;
     if (isLoggedIn) {
-      return <Redirect to={{ pathname: '/team', state: { teamId: this.state.email } }} />
+      return <Redirect to={{ pathname: '/profile', state: { teamId: this.state.email } }} />
     }
     return (
       <div>

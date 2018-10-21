@@ -9,7 +9,7 @@ export default () => {
   return (
       <BrowserRouter>
         <div>
-        <Route exact path='/team' component={TeamBar} />
+        <Route exact path='/team/:teamName' component={TeamBar} />
         <Route exact path='/' component={Home} />
         <Route exact path='/home' component={Home} />
         <Route exact path='/profile' component={UserPage} />

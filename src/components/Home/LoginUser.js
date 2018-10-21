@@ -47,7 +47,7 @@ class LoginTeamForm
   render() {
     const { isLoggedIn, invalidCredentials } = this.props;
     if (isLoggedIn) {
-      return <Redirect to={{ pathname: '/team', state: { teamId: this.state.email } }} />
+      return <Redirect to={{ pathname: '/profile' }} />
     }
     return (
       <div>

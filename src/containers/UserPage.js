@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
   return {
     userId: cookie.load("email"),
     activeElement : state.userPage.activeElement,
+    teamCreated: state.userPage.teamCreated,
     teams:state.userPage.teams
   }
 }

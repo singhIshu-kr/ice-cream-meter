@@ -130,21 +130,20 @@ export const checkLoggedIn = (dispatch) => {
 }
 
 export const addNewTeam = (dispatch, userId, teamName) => {
-  let body = { userId, teamName}
+  let body = { userId, teamName }
   return axios.post('/newTeam', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
-    if(res.status === 200){
-      cookie.save("teamId", teamName, { path: "/" });
+    if (res.status === 200) {
       return dispatch({
-        type: "TEAM_CREATED"
+        type: "TEAM_CREATED",
+        newTeam: teamName
       })
     }
   })
 }
 
-export const getTeamsOfUser = (dispatch, userId) =>{
+export const getTeamsOfUser = (dispatch, userId) => {
   return axios.get(`/myTeams/${userId}`, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
-    console.log(res)
-    if(res.status === 200){
+    if (res.status === 200) {
       return dispatch({
         type: "GET_TEAMS_OF_USER",
         teams: res.data.allTeamsOfUser

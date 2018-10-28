@@ -17,8 +17,9 @@ class TeamBar extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchTeamInfo, email } = this.props;
-    email && fetchTeamInfo(email);
+    const { fetchTeamInfo } = this.props;
+    const { teamId } = this.props.location.state;
+    teamId && fetchTeamInfo(teamId);
   }
 
   signOutTeam() {
@@ -27,14 +28,15 @@ class TeamBar extends React.Component {
   }
 
   render() {
-    const { teamInfo, addScore, addMember, removeMember, decreaseScore, resetScore, email, nameInUse, teamName } = this.props;
-    if (!email) {
+    const { teamInfo, addScore, addMember, removeMember, decreaseScore, resetScore, nameInUse } = this.props;
+    const {teamId} = this.props.location.state;
+    if (!teamId) {
       return <Redirect to={{ pathname: '/home' }} />
     }
     return (
       <div>
-        <h1 className="appHeader teamName">{teamName}</h1>
-        <NewMember onSubmit={addMember} teamId={email} nameInUse={nameInUse} />
+        <h1 className="appHeader teamName">{teamId}</h1>
+        <NewMember onSubmit={addMember} teamId={teamId} nameInUse={nameInUse} />
         <button id="signOut" onClick={this.signOutTeam}>Sign Out<i class="fa fa-sign-out signout-icon" aria-hidden="true"></i></button>
         <div className="container">
           <PartyPending pendingList={this.getPartyPendingList(teamInfo) || []} resetScore={resetScore} />

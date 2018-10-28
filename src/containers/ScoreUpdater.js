@@ -1,12 +1,11 @@
 import TeamBar from '../components/Team/TeamBar';
 import { connect } from 'react-redux';
 import { addScore, addMember,removeMember, decreaseScore,getSavedState,resetScore, signOutTeam} from '../actions/index';
-import cookie from 'react-cookies';
 
 const mapStateToProps = (state) => {
   return ({
     teamInfo: state.meterUpdaters.team,
-    email: cookie.load("email"),
+    teamId: state.meterUpdaters.teamId,
     nameInUse: state.meterUpdaters.nameInUse,
     teamName: state.meterUpdaters.teamName
   })

@@ -152,3 +152,13 @@ export const getTeamsOfUser = (dispatch, userId) => {
   })
 }
 
+export const getSearchedTeam = (dispatch, teamName) => {
+  return axios.get(`/search/${teamName}`, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if (res.status === 200) {
+      return dispatch({
+        type: "SEARCH_TEAM",
+        searchedTeam: res.data.name
+      })
+    }
+  })
+}

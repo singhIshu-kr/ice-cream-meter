@@ -333,28 +333,6 @@ describe('Should dispatch all the actions', () => {
     });
   });
 
-
-  // describe('signout Team', () => {
-  //   it('should dispatch SET_TEAM action when response is 200', (done) => {
-
-  //     mockAdapter.onPost('/signOutUser',{}).reply(() => {
-  //       return Promise.resolve([200])
-  //     }).onGet('/read/1233').reply(() => {
-  //       return Promise.resolve([200, []])
-  //     })
-  //     const dispatch = td.function();
-  //     const expectedAction = {
-  //       type: "SET_TEAM",
-  //       payload: []
-  //     }
-
-  //     actions.signOutTeam(dispatch,"1233").then(() => {
-  //       td.verify(dispatch(expectedAction), { times: 1 })
-  //       done();
-  //     })
-  //   });
-  // });
-
   describe('checkLoggedIn', () => {
     it('should dispatch IS_LOGGED_IN action if response is 204', (done) => {
       mockAdapter.onGet("/isLoggedIn").reply(()=>{

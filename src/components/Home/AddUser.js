@@ -13,7 +13,6 @@ class AddUserForm extends React.Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
-
   handleChange(event) {
     this.setState({ value: event.target.value });
   }

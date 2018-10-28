@@ -1,9 +1,10 @@
-const updateUserPage = (state = { userId:"", activeElement: "team_list", teamCreated: false, teams: []}, action) => {
+const updateUserPage = (state = { userId:"", activeElement: "team_list", newTeam: null, teams: []}, action) => {
   switch (action.type) {
     case 'TEAM_CREATED':
+    console.log(action)
       return {
         ...state,
-        teamCreated : true
+        newTeam : action.newTeam
       }
 
     case 'GET_TEAMS_OF_USER':

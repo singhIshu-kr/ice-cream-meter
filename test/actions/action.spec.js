@@ -377,9 +377,7 @@ describe('Should dispatch all the actions', () => {
         userId: "abcd@gmail.com",
         teamName: "NewTeam"
       }
-      const expectedAction = {
-        type: "TEAM_CREATED"
-      }
+      const expectedAction = { type: "TEAM_CREATED", newTeam: "NewTeam" }
       const dispatch = td.function();
 
       mockAdapter.onPost("/newTeam", body).reply(() => {
@@ -406,6 +404,25 @@ describe('Should dispatch all the actions', () => {
       })
 
       actions.getTeamsOfUser(dispatch, "abcd@gmail.com").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  });
+
+  describe('getSearchedTeam', () => {
+    it('should dispatch SEARCH_TEAM action if the response is 200', (done) => {
+      const expectedAction = {
+        type: "SEARCH_TEAM",
+        searchedTeam: "Magneto"
+      }
+      const dispatch = td.function();
+
+      mockAdapter.onGet("/search/Magneto").reply(() => {
+        return Promise.resolve([200, {name:"Magneto"}])
+      })
+
+      actions.getSearchedTeam(dispatch, "Magneto").then(() => {
         td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })

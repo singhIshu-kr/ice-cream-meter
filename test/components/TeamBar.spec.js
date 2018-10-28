@@ -28,8 +28,8 @@ describe('TeamBar',()=>{
     const removeMember = td.function();
     const addScore = td.function();
     const fetchTeamInfo = td.function();
-    const location = { state: { password: "" } };
-    const teambar = shallow(<TeamBar teamInfo={teamInfo} removeMember={removeMember} addScore={addScore} fetchTeamInfo={fetchTeamInfo} location={location} email="1233"/>);
+    const location = { state: { teamId: "1233" } };
+    const teambar = shallow(<TeamBar teamInfo={teamInfo} removeMember={removeMember} addScore={addScore} fetchTeamInfo={fetchTeamInfo} location={location} email="1233" teamId="1234"/>);
 
     teambar.instance().componentDidMount();
     const memberBar = teambar.find(MemberBar);
@@ -43,7 +43,7 @@ describe('TeamBar',()=>{
     const teamInfo = [{ name: "ishu", id: 1, score: 0 }];
     const addMember = td.function();
     const fetchTeamInfo = td.function();
-    const location = { state: { password: "" } };
+    const location = { state: { teamId: "12344" } };
     const teambar = shallow(<TeamBar teamInfo={teamInfo} addMember={addMember} fetchTeamInfo={fetchTeamInfo} location={location} email="1233"/>);
     const newMember = teambar.find(NewMember);
     expect(newMember.exists()).toBeTruthy();
@@ -55,7 +55,7 @@ describe('TeamBar',()=>{
     const removeMember = td.function();
     const addScore = td.function();
     const fetchTeamInfo = td.function();
-    const location = { state: { password: "" } };
+    const location = { state: { teamId: "12344" } };
     const teambar = shallow(<TeamBar teamInfo={teamInfo} removeMember={removeMember} addScore={addScore}
       fetchTeamInfo={fetchTeamInfo} location={location} email="1233"/>);
     const memberBar = teambar.find(MemberBar);

@@ -1,4 +1,4 @@
-const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: ""};
+const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: "", invalidName: false};
 
 const updateUserPage = (state = initialState, action) => {
   switch (action.type) {
@@ -11,15 +11,22 @@ const updateUserPage = (state = initialState, action) => {
     case 'SEARCH_TEAM':
       return {
         ...state,
-        searchedTeam: action.searchedTeam
+        searchedTeam: action.searchedTeam,
+        invalidName: false
       }
 
     case 'GET_TEAMS_OF_USER':
       return {
         ...state,
-        teams:action.teams
+        teams:action.teams,
+        invalidName: false
       }
     
+    case 'TEAM_DOESNOT_EXIST':
+      return {
+        ...state,
+        invalidName: true
+      }
     default:
       return state
   }

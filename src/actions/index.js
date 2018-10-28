@@ -160,5 +160,11 @@ export const getSearchedTeam = (dispatch, teamName) => {
         searchedTeam: res.data.name
       })
     }
+  }).catch((error)=>{
+    if(error.response.status === 404){
+      return dispatch({
+        type: "TEAM_DOESNOT_EXIST"
+      })
+    }
   })
 }

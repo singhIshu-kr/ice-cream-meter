@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
     activeElement : state.userPage.activeElement,
     newTeam: state.userPage.newTeam,
     teams:state.userPage.teams,
-    searchedTeam: state.userPage.searchedTeam
+    searchedTeam: state.userPage.searchedTeam,
+    invalidName: state.userPage.invalidName
   }
 }
 

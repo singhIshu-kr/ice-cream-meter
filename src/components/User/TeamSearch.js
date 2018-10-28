@@ -31,11 +31,11 @@ class TeamSearch extends React.Component {
   }
 
   render() {
-    const { searchedTeam } = this.props;
-    console.log(searchedTeam)
+    const { searchedTeam, invalidName} = this.props;
     return (
       <div className="addMember">
         <h3>{searchedTeam}</h3>
+        {invalidName && <p className="invalid-credentials">Invalid Name!</p>}
         <label>
           <input type="text" id="name" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event) => this.submitForm(event)} />
           <input id="submit" type="submit" className="primary" value="Search for team" onClick={this.handleSubmit} />

@@ -18,7 +18,8 @@ describe('reducer',()=>{
   })
 
   it('should return initial state as default', () => {
-    expect(meterUpdater(undefined, { type: types.ABC })).toEqual({ "nameInUse": false, "team": [], "teamName": null })
+    expect(meterUpdater(undefined, { type: types.ABC }))
+    .toEqual({ "nameInUse": false, "team": [], "teamID": "", "teamName": null })
   });
 
   it('should return make the email undefined on signout team action', () => {

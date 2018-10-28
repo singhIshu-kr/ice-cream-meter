@@ -1,7 +1,6 @@
 import React from 'react'
 import NewTeam from './NewTeam'
 import { Redirect, Link } from 'react-router-dom';
-import cookie from 'react-cookies';
 
 class Container extends React.Component {
   componentWillMount(){
@@ -10,9 +9,9 @@ class Container extends React.Component {
   }
 
   render(){
-    const {activeElement, addNewTeam, userId, teams,teamCreated} = this.props;
-    if(teamCreated){
-      return <Redirect to={{ pathname: `/team/${cookie.load("teamId")}` }} />
+    const {activeElement, addNewTeam, userId, teams, newTeam} = this.props;
+    if(newTeam){
+      return <Redirect to={{ pathname: `/team/${newTeam}}`, state: { teamId: newTeam }}} />
     }
     return(
       <div>
@@ -20,7 +19,9 @@ class Container extends React.Component {
         {
           teams.map((team)=>{
             return (
-              <p><Link to={`/team/${team.teamId}`}>{team.teamId}</Link></p>
+              <ol>
+              <Link to={{ pathname: `/team/${team.teamId}`, state: { teamId: team.teamId } }}>{team.teamId}</Link>
+              </ol>
             )
           })
         }

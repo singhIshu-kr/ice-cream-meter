@@ -1,4 +1,4 @@
-const meterUpdater = (state = { team: [], nameInUse: false, teamName: null}, action) => {
+const meterUpdater = (state = { team: [], teamID: "", nameInUse: false, teamName: null}, action) => {
   switch (action.type) {
     case 'SET_TEAM':
       return {

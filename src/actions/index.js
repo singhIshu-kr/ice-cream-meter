@@ -65,6 +65,8 @@ export const getSavedState = (dispatch, teamId) => {
           payload: response.data
         }
       )
+    }).catch(() => {
+      window.location.href = "/";
     });
 }
 
@@ -149,6 +151,8 @@ export const getTeamsOfUser = (dispatch, userId) => {
         teams: res.data.allTeamsOfUser
       })
     }
+  }).catch(() => {
+    window.location.href = '/'
   })
 }
 
@@ -160,8 +164,8 @@ export const getSearchedTeam = (dispatch, teamName) => {
         searchedTeam: res.data.name
       })
     }
-  }).catch((error)=>{
-    if(error.response.status === 404){
+  }).catch((error) => {
+    if (error.response.status === 404) {
       return dispatch({
         type: "TEAM_DOESNOT_EXIST"
       })

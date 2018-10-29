@@ -18,7 +18,7 @@ class TeamBar extends React.Component {
 
   componentDidMount() {
     const { fetchTeamInfo } = this.props;
-    const { teamId } = this.props.location.state;
+    const { teamId } = this.props.location.state || this.props;
     teamId && fetchTeamInfo(teamId);
   }
 
@@ -29,7 +29,7 @@ class TeamBar extends React.Component {
 
   render() {
     const { teamInfo, addScore, addMember, removeMember, decreaseScore, resetScore, nameInUse } = this.props;
-    const {teamId} = this.props.location.state;
+    const { teamId } = this.props.location.state || this.props;
     if (!teamId) {
       return <Redirect to={{ pathname: '/home' }} />
     }

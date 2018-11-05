@@ -162,6 +162,19 @@ describe('Should dispatch all the actions', () => {
         done();
       })   
     });
+
+    it('should dispatch INTERNAL_SERVER_ERROR for errors other than 400', (done) => {
+      const dispatch = td.function('dispatch');
+      const expectedAction = {
+        type: "INTERNAL_SERVER_ERROR"
+      }
+      const body = { name: "ishu" };
+      mockAdapter.onPost('/addMember', body).reply(500);
+      actions.addMember(dispatch, "ishu").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
   })
 
   describe('Remove Member', () => {
@@ -398,6 +411,22 @@ describe('Should dispatch all the actions', () => {
 
       mockAdapter.onGet("/search/Magneto").reply(() => {
         return Promise.resolve([200, {name:"Magneto"}])
+      })
+
+      actions.getSearchedTeam(dispatch, "Magneto").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+
+    it('should dispatch TEAM_DOESNOT_EXIST action if the response is 404', (done) => {
+      const expectedAction = {
+        type: "TEAM_DOESNOT_EXIST"
+      }
+      const dispatch = td.function();
+
+      mockAdapter.onGet("/search/Magneto").reply(() => {
+        return Promise.resolve([404])
       })
 
       actions.getSearchedTeam(dispatch, "Magneto").then(() => {

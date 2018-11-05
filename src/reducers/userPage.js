@@ -1,4 +1,4 @@
-const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: "", invalidName: false};
+const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: "", invalidName: false, errorMessage: "", infoMessage:""};
 
 const updateUserPage = (state = initialState, action) => {
   switch (action.type) {
@@ -12,7 +12,8 @@ const updateUserPage = (state = initialState, action) => {
       return {
         ...state,
         searchedTeam: action.searchedTeam,
-        invalidName: false
+        invalidName: false,
+        infoMessage: ""
       }
 
     case 'GET_TEAMS_OF_USER':
@@ -25,8 +26,26 @@ const updateUserPage = (state = initialState, action) => {
     case 'TEAM_DOESNOT_EXIST':
       return {
         ...state,
-        invalidName: true
+        searchedTeam:"",
+        invalidName: true,
+        errorMessage: "Invalid Name"
       }
+
+    case 'INVALID_REQUEST':
+      return {
+        ...state,
+        invalidName: true,
+        errorMessage: "You are requesting access for your own team.",
+        searchedTeam: ""
+      }
+
+    case 'REQUEST_SENT':
+      return {
+        ...state,
+        infoMessage: "Request Sent",
+        searchedTeam: ""
+      }
+
     default:
       return state
   }

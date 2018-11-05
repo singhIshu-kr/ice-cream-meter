@@ -242,6 +242,10 @@ body {
   height: 100%;
 }
 
+.searchTeam{
+  margin:-10px 30px;
+}
+
 #signOut{
   color: #fff;
   box-shadow: inset -1px -1px 3px #999;

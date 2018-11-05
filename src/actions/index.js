@@ -172,3 +172,21 @@ export const getSearchedTeam = (dispatch, teamName) => {
     }
   })
 }
+
+export const requestAccess = (dispatch, teamName) => {
+  const userId = cookie.load("email");
+  const body = { teamName, userId}
+  return axios.post("/request", body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if(res.status === 200){
+      return dispatch({
+        type: "REQUEST_SENT"
+      })
+    }
+  }).catch((error)=>{
+    if(error.response.status === 400){
+      return dispatch({
+        type: "INVALID_REQUEST"
+      })
+    }
+  })
+}

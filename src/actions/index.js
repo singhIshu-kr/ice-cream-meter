@@ -190,3 +190,15 @@ export const requestAccess = (dispatch, teamName) => {
     }
   })
 }
+
+export const getAccessRequests = (dispatch, userId) =>{
+  return axios.get(`/allRequests/${userId}`, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if (res.status === 200) {
+      return dispatch({
+        type: "GET_ACCESS_REQUESTS",
+        accessRequests: res.data
+      })
+    }
+  })
+}
+

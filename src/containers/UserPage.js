@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import UserPage from "../components/User/UserPage"
-import {addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess} from "../actions/index"
+import { addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess, getAccessRequests} from "../actions/index"
 import cookie from 'react-cookies';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     searchedTeam: state.userPage.searchedTeam,
     invalidName: state.userPage.invalidName,
     errorMessage: state.userPage.errorMessage,
-    infoMessage: state.userPage.infoMessage
+    infoMessage: state.userPage.infoMessage,
+    requests: state.userPage.requests
   }
 }
 
@@ -22,7 +23,8 @@ const mapDispatchToProps = (dispatch) => {
     getTeamsOfUser :(userId) => getTeamsOfUser(dispatch, userId),
     signOutUser: (id) => signOutTeam(dispatch, id),
     getSearchedTeam: (id) => getSearchedTeam(dispatch, id),
-    requestAccess:(teamName) => requestAccess(dispatch, teamName)
+    requestAccess:(teamName) => requestAccess(dispatch, teamName),
+    getAccessRequests: (userId) => getAccessRequests(dispatch, userId)
   })
 }
 

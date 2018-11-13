@@ -1,4 +1,4 @@
-const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: "", invalidName: false, errorMessage: "", infoMessage:""};
+const initialState = { userId: "", activeElement: "team_list", newTeam: null, teams: [], searchedTeam: "", invalidName: false, errorMessage: "", infoMessage: "", requests: []};
 
 const updateUserPage = (state = initialState, action) => {
   switch (action.type) {
@@ -44,6 +44,12 @@ const updateUserPage = (state = initialState, action) => {
         ...state,
         infoMessage: "Request Sent",
         searchedTeam: ""
+      }
+    
+    case 'GET_ACCESS_REQUESTS':
+      return {
+        ...state,
+        requests: action.accessRequests
       }
 
     default:

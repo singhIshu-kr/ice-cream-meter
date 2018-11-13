@@ -435,4 +435,40 @@ describe('Should dispatch all the actions', () => {
       })
     });
   });
+
+  describe('getAccessRequests', () => {
+    it('should dispatch GET_ACCESS_REQUESTS action if the response is 200', (done) => {
+      const expectedAction = {
+        type: "GET_ACCESS_REQUESTS",
+        accessRequests: [{ "userId": "ponu@gmail.com", "teamId": "Ishu", "role": "WAITING" }]
+      }
+      const dispatch = td.function();
+
+      mockAdapter.onGet("/allRequests/abcd@gmail.com").reply(() => {
+        return Promise.resolve([200, [{ "userId": "ponu@gmail.com", "teamId": "Ishu", "role": "WAITING" }]])
+      })
+
+      actions.getAccessRequests(dispatch, "abcd@gmail.com").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  })
+
+  //   it('should dispatch TEAM_DOESNOT_EXIST action if the response is 404', (done) => {
+  //     const expectedAction = {
+  //       type: "TEAM_DOESNOT_EXIST"
+  //     }
+  //     const dispatch = td.function();
+
+  //     mockAdapter.onGet("/search/Magneto").reply(() => {
+  //       return Promise.resolve([404])
+  //     })
+
+  //     actions.getSearchedTeam(dispatch, "Magneto").then(() => {
+  //       td.verify(dispatch(expectedAction), { times: 1 })
+  //       done();
+  //     })
+  //   });
+  // });
 })

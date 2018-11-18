@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import UserPage from "../components/User/UserPage"
-import { addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess, getAccessRequests} from "../actions/index"
+import { addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess, getAccessRequests, permitAccess} from "../actions/index"
 import cookie from 'react-cookies';
 
 const mapStateToProps = (state) => {
@@ -23,8 +23,9 @@ const mapDispatchToProps = (dispatch) => {
     getTeamsOfUser :(userId) => getTeamsOfUser(dispatch, userId),
     signOutUser: (id) => signOutTeam(dispatch, id),
     getSearchedTeam: (id) => getSearchedTeam(dispatch, id),
-    requestAccess:(teamName) => requestAccess(dispatch, teamName),
-    getAccessRequests: (userId) => getAccessRequests(dispatch, userId)
+    requestAccess:(userId, teamName) => requestAccess(dispatch, userId, teamName),
+    getAccessRequests: (userId) => getAccessRequests(dispatch, userId),
+    permitAccess: (userId, requestUser, teamName, role) => permitAccess(dispatch, userId, requestUser, teamName, role)
   })
 }
 

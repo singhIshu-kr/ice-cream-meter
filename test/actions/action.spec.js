@@ -455,20 +455,88 @@ describe('Should dispatch all the actions', () => {
     });
   })
 
-  //   it('should dispatch TEAM_DOESNOT_EXIST action if the response is 404', (done) => {
-  //     const expectedAction = {
-  //       type: "TEAM_DOESNOT_EXIST"
-  //     }
-  //     const dispatch = td.function();
+    it('should dispatch TEAM_DOESNOT_EXIST action if the response is 404', (done) => {
+      const expectedAction = {
+        type: "TEAM_DOESNOT_EXIST"
+      }
+      const dispatch = td.function();
 
-  //     mockAdapter.onGet("/search/Magneto").reply(() => {
-  //       return Promise.resolve([404])
-  //     })
+      mockAdapter.onGet("/search/Magneto").reply(() => {
+        return Promise.resolve([404])
+      })
 
-  //     actions.getSearchedTeam(dispatch, "Magneto").then(() => {
-  //       td.verify(dispatch(expectedAction), { times: 1 })
-  //       done();
-  //     })
-  //   });
-  // });
+      actions.getSearchedTeam(dispatch, "Magneto").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+
+  describe('permitAccess',()=>{
+    it('should dispatch GET_ACCESS_REQUESTS action if the response is 200', (done) => {
+      const expectedAction = {
+        type: "GET_ACCESS_REQUESTS",
+        accessRequests: []
+      }
+      const dispatch = td.function();
+      const body = {
+        userId: "ponu@gmail.com",
+        teamName: "Magneto",
+        role: "ADMIN",
+        requestUser: "abcd@gmail.com"
+      }
+
+      mockAdapter.onPost("/permitAccess",body).reply(()=>{
+        return Promise.resolve([200])
+      }).onGet("/allRequests/ponu@gmail.com").reply(() => {
+        return Promise.resolve([200, []])
+      })
+
+      actions.permitAccess(dispatch, "ponu@gmail.com","abcd@gmail.com", "Magneto", "ADMIN").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  })
+
+  describe('requestAccess', () => {
+    it('should dispatch REQUEST_SENT action if the response is 200', (done) => {
+      const expectedAction = {
+        type: "REQUEST_SENT"
+      }
+      const dispatch = td.function();
+      const body = {
+        teamName: "Magneto",
+        userId: "ponu@gmail.com"
+      }
+
+      mockAdapter.onPost("/request", body).reply(() => {
+        return Promise.resolve([200])
+      })
+
+      actions.requestAccess(dispatch,"ponu@gmail.com", "Magneto").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+
+    it('should dispatch INVALID_REQUEST action if the response is 400', (done) => {
+      const expectedAction = {
+        type: "INVALID_REQUEST"
+      }
+      const dispatch = td.function();
+      const body = {
+        teamName: "Magneto",
+        userId: "ponu@gmail.com"
+      }
+
+      mockAdapter.onPost("/request", body).reply(() => {
+        return Promise.resolve([400])
+      })
+
+      actions.requestAccess(dispatch, "ponu@gmail.com", "Magneto").then(() => {
+        td.verify(dispatch(expectedAction), { times: 1 })
+        done();
+      })
+    });
+  })
 })

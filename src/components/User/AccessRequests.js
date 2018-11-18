@@ -8,7 +8,7 @@ class AccessRequests extends React.Component{
   }
 
   render(){
-    const { requests} = this.props;
+    const { requests, permitAccess, userId} = this.props;
     return (
       <div>
         {
@@ -16,7 +16,7 @@ class AccessRequests extends React.Component{
             return (
               <ol>
               <h3>{request.userId} ==> {request.teamId}</h3>
-              {/* <button onClick={()=>{giveAccess("ADMIN")}}></button> */}
+              <button onClick={()=>{permitAccess(userId,request.userId,request.teamId,"ADMIN")}}>Make Admin</button>
               </ol>
             )
           })

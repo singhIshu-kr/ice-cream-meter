@@ -173,8 +173,7 @@ export const getSearchedTeam = (dispatch, teamName) => {
   })
 }
 
-export const requestAccess = (dispatch, teamName) => {
-  const userId = cookie.load("email");
+export const requestAccess = (dispatch, userId, teamName) => {
   const body = { teamName, userId}
   return axios.post("/request", body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
     if(res.status === 200){
@@ -198,6 +197,15 @@ export const getAccessRequests = (dispatch, userId) =>{
         type: "GET_ACCESS_REQUESTS",
         accessRequests: res.data
       })
+    }
+  })
+}
+
+export const permitAccess = (dispatch, userId, requestUser, teamName, role) => {
+  const body = { userId, requestUser, teamName, role}
+  return axios.post(`/permitAccess`, body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    if(res.status === 200) {
+      return getAccessRequests(dispatch, userId)
     }
   })
 }

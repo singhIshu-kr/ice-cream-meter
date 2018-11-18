@@ -20,13 +20,13 @@ class UserPage extends React.Component {
   }
 
   render() {
-    const { activeElement, addNewTeam, userId, teams, getTeamsOfUser, newTeam, getSearchedTeam, searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, requests, getAccessRequests} = this.props;
+    const { activeElement, addNewTeam, userId, teams, getTeamsOfUser, newTeam, getSearchedTeam, searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, requests, getAccessRequests, permitAccess} = this.props;
     return (
       <div >
         <button id="signOut" onClick={this.signOutTeam}>Sign Out<i class="fa fa-sign-out signout-icon" aria-hidden="true"></i></button>
-        <TeamSearch getSearchedTeam={getSearchedTeam} searchedTeam={searchedTeam} invalidName={invalidName} errorMessage={errorMessage} requestAccess={requestAccess} infoMessage={infoMessage}/>
+        <TeamSearch getSearchedTeam={getSearchedTeam} searchedTeam={searchedTeam} invalidName={invalidName} errorMessage={errorMessage} requestAccess={requestAccess} infoMessage={infoMessage} userId={userId}/>
         <Container activeElement={activeElement} addNewTeam={addNewTeam} userId={userId} teams={teams} getTeamsOfUser={getTeamsOfUser} newTeam={newTeam} />
-        <AccessRequests requests={requests} getAccessRequests={getAccessRequests} userId={userId}/>
+        <AccessRequests requests={requests} getAccessRequests={getAccessRequests} userId={userId} permitAccess={permitAccess}/>
       </div>
     )
   }

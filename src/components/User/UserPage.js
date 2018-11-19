@@ -23,6 +23,7 @@ class UserPage extends React.Component {
     const { activeElement, addNewTeam, userId, teams, getTeamsOfUser, newTeam, getSearchedTeam, searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, requests, getAccessRequests, permitAccess} = this.props;
     return (
       <div >
+        <h3>{userId}</h3>
         <button id="signOut" onClick={this.signOutTeam}>Sign Out<i class="fa fa-sign-out signout-icon" aria-hidden="true"></i></button>
         <TeamSearch getSearchedTeam={getSearchedTeam} searchedTeam={searchedTeam} invalidName={invalidName} errorMessage={errorMessage} requestAccess={requestAccess} infoMessage={infoMessage} userId={userId}/>
         <Container activeElement={activeElement} addNewTeam={addNewTeam} userId={userId} teams={teams} getTeamsOfUser={getTeamsOfUser} newTeam={newTeam} />

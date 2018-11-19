@@ -17,6 +17,7 @@ class AccessRequests extends React.Component{
               <ol>
               <h3>{request.userId} ==> {request.teamId}</h3>
               <button onClick={()=>{permitAccess(userId,request.userId,request.teamId,"ADMIN")}}>Make Admin</button>
+              <button onClick={() => { permitAccess(userId, request.userId, request.teamId, "GUEST") }}>Make Guest</button>
               </ol>
             )
           })

@@ -1,11 +1,12 @@
-const meterUpdater = (state = { team: [], teamID: "", nameInUse: false, teamName: null}, action) => {
+const meterUpdater = (state = { team: [], teamID: "", nameInUse: false, teamName: null, userType: undefined}, action) => {
   switch (action.type) {
     case 'SET_TEAM':
       return {
         ...state,
         nameInUse:false,
         team: action.payload.memberInfo,
-        teamName:action.payload.name
+        teamName:action.payload.name,
+        userType:action.payload.userType
       }
     
     case 'SIGNOUT_TEAM':

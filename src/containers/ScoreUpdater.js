@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
     teamInfo: state.meterUpdaters.team,
     teamId: state.meterUpdaters.teamId,
     nameInUse: state.meterUpdaters.nameInUse,
-    teamName: state.meterUpdaters.teamName
+    teamName: state.meterUpdaters.teamName,
+    userType: state.meterUpdaters.userType
   })
 }
 

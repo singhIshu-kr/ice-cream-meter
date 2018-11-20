@@ -28,7 +28,7 @@ const updateUserPage = (state = initialState, action) => {
         ...state,
         searchedTeam:"",
         invalidName: true,
-        errorMessage: "Invalid Name"
+        errorMessage: "No team found with this name"
       }
 
     case 'INVALID_REQUEST':

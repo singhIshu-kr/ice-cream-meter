@@ -56,7 +56,7 @@ class LoginTeamForm
           <div >
             <input type="text" id="userName" placeholder="User Email" value={this.state.email} onChange={this.handleChange} required />
             <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}  required />
-            <input id="submit" type="submit" value="Go to Ice-cream Meter" onClick={this.handleSubmit} />
+            <input id="submit" type="submit" value="Login" onClick={this.handleSubmit} />
           </div>
         </label>
       </div>

@@ -19,7 +19,7 @@ class HomePage extends React.Component {
         <div class="form" >
           <div id="login"><Login loginTeam={loginTeam} isLoggedIn={isLoggedIn} invalidCredentials={invalidCredentials}/></div>
           <p>or</p>
-          <a href onClick={(e) => toggleLogin()} id="teamLink">Don't have an account?</a>
+          <a href onClick={(e) => toggleLogin()} id="teamLink">SignUp</a>
         </div>
         </div>
       )

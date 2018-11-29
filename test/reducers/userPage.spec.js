@@ -38,7 +38,7 @@ describe('User Page reducer', () => {
 
   it('should return invalidName as true on TEAM_DOESNOT_EXIST action', () => {
     let action = { type: types.TEAM_DOESNOT_EXIST};
-    let expectedState = { "activeElement": "team_list", "errorMessage": "Invalid Name", "infoMessage": "", "invalidName": true, "newTeam": null, "requests": [], "searchedTeam": "", "teams": [], "userId": "" };
+    let expectedState = { "activeElement": "team_list", "errorMessage": "No team found with this name", "infoMessage": "", "invalidName": true, "newTeam": null, "requests": [], "searchedTeam": "", "teams": [], "userId": "" };
     expect(updateUserPage(undefined, action)).toEqual(expectedState);
   });
 

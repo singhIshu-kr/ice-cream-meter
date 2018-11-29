@@ -29,32 +29,37 @@ class LoginTeamForm
 
   handleSubmit() {
     const {email,password} = this.state;
-    this.checkEmptyField(email,password) && this.props.loginTeam(email,password);
+    console.log(this.checkEmptyField(email, password),"enkf,mdsafnkl")
+    return this.checkEmptyField(email, password) && this.props.loginTeam(email,password);
   }
 
   checkEmptyField(email,password){
-    return (email && password) ? this.validateEmail(email) : alert("No field should be empty");
+    if(email && password){
+      return this.validateEmail(email)
+    }
+    this.props.displayError("No fields should be empty")
+    return false;
   }
 
   validateEmail(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return (true)
     }
-    alert("Invalid email format");
+    this.props.displayError("Invalid email format")
     return (false)
   }
 
   render() {
-    const { isLoggedIn, invalidCredentials } = this.props;
+    const { isLoggedIn, hasError, errorMessage} = this.props;
     if (isLoggedIn) {
       return <Redirect to={{ pathname: '/profile' }} />
     }
     return (
       <div>
-        {invalidCredentials && <p className="invalid-credentials">Invalid Credentials!</p>}
+        {hasError && <p className="invalid-credentials">{errorMessage}</p>}
         <label >
           <div >
-            <input type="text" id="userName" placeholder="User Email" value={this.state.email} onChange={this.handleChange} required />
+            <input type="email" id="userName" placeholder="User Email" value={this.state.email} onChange={this.handleChange} required />
             <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}  required />
             <input id="submit" type="submit" value="Login" onClick={this.handleSubmit} />
           </div>

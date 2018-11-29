@@ -21,7 +21,7 @@ describe('Home Page Reducer', () => {
 
   it('should return initial state when action does not match', () => {
     let action = { type: "FOO", email: "abc" };
-    expect(homePgReducer(undefined, action)).toEqual({ "email": "arvind", "invalidCredentials": false, "isLoggedIn": false, "showLogin": true })
+    expect(homePgReducer(undefined, action)).toEqual({ "email": "arvind", "errorMessage": "", "hasError": false, "isLoggedIn": false, "showLogin": true })
   })
 
   it('should return the toggled login on toggle action', () => {
@@ -45,11 +45,7 @@ describe('Home Page Reducer', () => {
   it('should return invalid credentials true on invalid credentials', () => {
     const action = { type: "INVALID_CREDENTIALS" };
     const state = { email: "", isLoggedIn: true, invalidCredentials:false};
-    expect(homePgReducer(state, action)).toEqual({
-      "email": "",
-      "isLoggedIn": true,
-      "invalidCredentials":true
-    })
+    expect(homePgReducer(state, action)).toEqual({ "email": "", "errorMessage": "Invalid Credentials", "hasError": true, "invalidCredentials": false, "isLoggedIn": true })
   });
 
   it('should return is loggedIn true on is loggedIn action ', () => {

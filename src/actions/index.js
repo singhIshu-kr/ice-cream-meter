@@ -210,3 +210,9 @@ export const permitAccess = (dispatch, userId, requestUser, teamName, role) => {
   })
 }
 
+export const displayError = (errorMessage) => {
+  return {
+    type: "ERROR",
+    errorMessage
+  }
+}

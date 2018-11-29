@@ -1,4 +1,4 @@
-const homePage = (state = {email:"arvind",showLogin:true,isLoggedIn:false,invalidCredentials:false},action)=>{
+const homePage = (state = { email: "arvind", showLogin: true, isLoggedIn: false, hasError: false, errorMessage:""},action)=>{
   switch (action.type) {
     case 'OPEN_TEAM':
       return {
@@ -17,10 +17,18 @@ const homePage = (state = {email:"arvind",showLogin:true,isLoggedIn:false,invali
       isLoggedIn:true
     }
 
+    case "ERROR":
+      return {
+        ...state,
+        hasError: true,
+        errorMessage: action.errorMessage
+      }
+
     case 'INVALID_CREDENTIALS':
     return {
       ...state,
-      invalidCredentials : true
+      hasError: true,
+      errorMessage: "Invalid Credentials"
     }
 
     case "IS_LOGGED_IN":

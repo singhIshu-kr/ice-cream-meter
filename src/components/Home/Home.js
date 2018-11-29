@@ -11,13 +11,13 @@ class HomePage extends React.Component {
   }
 
   showLoginOrSignUp(){
-    const { addUser, toggleLogin, showLogin, isLoggedIn, loginTeam, invalidCredentials} = this.props;
+    const { addUser, toggleLogin, showLogin, isLoggedIn, loginTeam, hasError, errorMessage, displayError} = this.props;
     if(showLogin){
       return (
         <div className="formContainer">
         {this.props.isLoggedIn && <Redirect to={{ pathname: '/team' }} />}
         <div class="form" >
-          <div id="login"><Login loginTeam={loginTeam} isLoggedIn={isLoggedIn} invalidCredentials={invalidCredentials}/></div>
+            <div id="login"><Login loginTeam={loginTeam} isLoggedIn={isLoggedIn} hasError={hasError} errorMessage={errorMessage} displayError={displayError}/></div>
           <p>or</p>
           <a href onClick={(e) => toggleLogin()} id="teamLink">SignUp</a>
         </div>

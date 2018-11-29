@@ -8,7 +8,7 @@ const App = ()=>{
     <div className="App">
     <div className="AppContainer">
         <div className="header-container">
-          <h1 className="appHeader">Ice-Cream-Meter</h1>
+          <h1 className="appHeader">Ice Cream Meter</h1>
         </div>
         <main >
           <Routes />

@@ -39,7 +39,7 @@ class NewTeam extends React.Component {
   render() {
     return (
       <div className="addMember">
-        <label>
+        <label className="newMember"> 
           <input type="text" id="name" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event) => this.submitForm(event)} />
           <input id="submit" type="submit" className="primary" value="Add Team" onClick={this.handleSubmit} />
         </label>

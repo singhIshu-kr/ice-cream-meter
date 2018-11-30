@@ -39,12 +39,14 @@ class NewMember extends React.Component {
   render() {
     const { nameInUse } = this.props;
     return (
-      <div className="addMember">
+      <div>
         {nameInUse && <p className="invalid-credentials">Name should be unique</p>}
+      < div className = "addMember" >
         <label>
           <input type="text" id="name" placeholder="Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event)=>this.submitForm(event)} />
           <input id="submit" type="submit" className="primary" value="Add Member" onClick={this.handleSubmit} />
         </label>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Ultra');
-
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
 body {
   font-family: 'Cinzel', sans-serif;
@@ -12,7 +12,7 @@ body {
   color:#455A64;
   text-align: center;
   font-stretch: ultra-expanded;
-  font-family: 'Ultra', serif;
+  font-family: 'Abril Fatface', cursive;
   font-size:3rem;
   font-weight: 400;
   font-style: normal;
@@ -87,7 +87,7 @@ body {
 }
 
 #submit{
-  /* background: #009688; */
+  background: #009688;
   color: #fff;
   box-shadow: inset -1px -1px 3px #999;
   -moz-box-shadow: inset -1px -1px 3px #999;
@@ -115,7 +115,7 @@ body {
 }
 
 #name, #id{
-  width: 15%;
+  width: 12rem;
   height: 36px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -272,15 +272,104 @@ body {
   margin-left: 10px;
 }
 
-.teamName {
+.teamName  {
     color: #009688;
     font-weight: bold;
     width: 330px;
-    font-size: 1.9rem;
-    position: absolute;
-    top: 1%;
+    /* font-size: 1.5rem; */
+    position: fixed;
+    top: 6%;
+    font-family: 'Amatic SC', cursive;
 }
 
 .subHeader{
   display: flex;
+}
+
+.team button {
+  background: #009688;
+  color: #fff;
+  box-shadow: inset -1px -1px 3px #999;
+  border-radius: 3px;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 3px;    
+  font-weight: bold;
+  animation: fadeIn 2s;    
+  margin-left: 1%;
+  padding: 7px 13px;
+  font-size: 1rem;
+  width: 20rem;
+  height: 2.5rem;
+}
+
+.team button:not(:last-child) {
+    border-bottom: none;
+}
+
+.team button:hover {
+    background-color: #a0a7a6;
+}
+
+.myTeams {
+  margin-top: 2rem;
+}
+
+.teamSearch {
+      width: 30rem;
+    float: left;
+    height: 2rem;
+    display: inline;
+}
+
+.searchedTeam{
+  background-color: #000000;
+  display: inline;
+  width: 20rem;
+}
+
+#searchedTeam {
+  color: #009688;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.infoMessage {
+  color: #009688;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.invalid-credentials{
+  color: red;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.accessRequest {
+  width: 40rem;
+  margin-left: 30rem;
+  margin-top: -19rem; 
+  display: flex;
+}
+
+#request {
+  font-size: 1.1rem;
+    font-weight: bold;
+  color:#097b71;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#accessButton {
+  color: #fff;
+  box-shadow: inset -1px -1px 3px #999;
+  -moz-box-shadow: inset -1px -1px 3px #999;
+  background: #009688;
+  border-radius: 4px;
+  font-weight: bold;
+  animation: fadeIn 2s;    
+  width: 8rem;
+  height: 2rem;
+  padding: 7px 13px;
+  font-size: 0.9rem;
+  margin: 0.8rem;
 }

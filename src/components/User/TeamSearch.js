@@ -33,14 +33,16 @@ class TeamSearch extends React.Component {
   render() {
     const { searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, userId} = this.props;
     return (
-      <div className="addMember">
-        <h3>{searchedTeam}</h3>
-        {searchedTeam && <button onClick={()=> requestAccess(userId, searchedTeam)}>Request Access</button>}
-        {invalidName ? <p className="invalid-credentials">{errorMessage}</p> : <p>{infoMessage}</p>}
-        <label>
+      <div>
+        <div className="searchedTeam">
+          <h3 id="searchedTeam">{searchedTeam}</h3>
+          {searchedTeam && <button onClick={() => requestAccess(userId, searchedTeam)} id="submit">Request Access</button>}
+        </div>
+        {invalidName ? <p className="invalid-credentials">{errorMessage}</p> : <p className="infoMessage">{infoMessage}</p>}
+        <div className="teamSearch">
           <input type="text" id="name" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event) => this.submitForm(event)} />
           <input id="submit" type="submit" className="primary" value="Search for team" onClick={this.handleSubmit} />
-        </label>
+        </div>
       </div>
     );
   }

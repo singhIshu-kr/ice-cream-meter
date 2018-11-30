@@ -16,12 +16,15 @@ class Container extends React.Component {
     return (
       <div>
         <NewTeam activeElement={activeElement} addNewTeam={addNewTeam} userId={userId} />
-        <table>
+        <table className="myTeams">
+          <h1>My teams</h1>
           {
             teams.map((team) => {
               return (
-                <ol>
-                  <Link to={{ pathname: `/team/${team.teamId}`, state: { teamId: team.teamId } }}>{team.teamId}</Link>
+                <ol className="team">
+                  <Link to={{ pathname: `/team/${team.teamId}`, state: { teamId: team.teamId } }}>
+                  <button>{team.teamId}</button>
+                  </Link>
                 </ol>
               )
             })

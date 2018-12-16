@@ -76,3 +76,7 @@ th, td {
 
 /* button:nth-child(even) {background-color: #bcebe6;}
 button:nth-child(odd) {background-color: pink;} */
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}

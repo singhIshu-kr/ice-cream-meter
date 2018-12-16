@@ -25,7 +25,7 @@ class NewTeam extends React.Component {
 
   submitForm(event) {
     if (event.key == "Enter") {
-      document.getElementById("submit").click();
+      document.querySelector(".fa-plus-circle").click();
     }
   }
 
@@ -40,8 +40,8 @@ class NewTeam extends React.Component {
     return (
       <div className="addMember">
         <label className="newMember"> 
-          <input type="text" id="name" placeholder="Team Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event) => this.submitForm(event)} />
-          <input id="submit" type="submit" className="primary" value="Add Team" onClick={this.handleSubmit} />
+          <input type="text" className={"name"} placeholder="Team Name" value={this.state.value} onChange={this.handleChange} onKeyPress={(event) => this.submitForm(event)} />
+          <i className={"fa fa-plus-circle"} onClick={this.handleSubmit}/>
         </label>
       </div>
     );

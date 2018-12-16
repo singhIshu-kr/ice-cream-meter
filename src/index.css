@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import url('https://fonts.googleapis.com/css?family=Elsie+Swash+Caps|Pacifico');
 
 body {
   font-family: 'Cinzel', sans-serif;
@@ -9,13 +10,16 @@ body {
 }
 
 .appHeader ,#party{
-  color:#455A64;
+  color: #FFF;
   text-align: center;
-  font-stretch: ultra-expanded;
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Elsie Swash Caps', cursive;
   font-size:3rem;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: lighter;
+}
+
+.header-container {
+  padding: 1px 0;
+  background: rgba(9, 123, 113, 0.86);
 }
 
 #party{
@@ -87,19 +91,19 @@ body {
 }
 
 #submit{
-  background: #009688;
-  color: #fff;
-  box-shadow: inset -1px -1px 3px #999;
-  -moz-box-shadow: inset -1px -1px 3px #999;
-  -webkit-box-shadow: inset -1px -1px 3px #999;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;    
-  font-weight: bold;
-  animation: fadeIn 2s;    
-  margin-left: 1%;
-  padding: 7px 13px;
-  font-size: 0.8rem;
+  /*background: #009688;*/
+  /*color: #fff;*/
+  /*box-shadow: inset -1px -1px 3px #999;*/
+  /*-moz-box-shadow: inset -1px -1px 3px #999;*/
+  /*-webkit-box-shadow: inset -1px -1px 3px #999;*/
+  /*border-radius: 3px;*/
+  /*-webkit-border-radius: 3px;*/
+  /*-moz-border-radius: 3px;    */
+  /*font-weight: bold;*/
+  /*animation: fadeIn 2s;    */
+  /*margin-left: 1%;*/
+  /*padding: 7px 13px;*/
+  /*font-size: 0.8rem;*/
 }
 
 .cancelButton {
@@ -114,18 +118,19 @@ body {
   animation: fadeIn 2s;
 }
 
-#name, #id{
-  width: 12rem;
-  height: 36px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border: 1px solid #a3a3a3;
+.name, #id{
+  width: 17rem;
+  height: 26px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border: 1px solid #009688;
   outline: none;
   color: #333;
   background: rgb(255, 253, 252);
-  font-size: 1rem;
-  padding-left: 0.8rem;
-  margin-left: 10px;
+  font-size: 14px;
+  font-weight: lighter;
+  margin: 2px 0;
+  text-align: center;
 }
 
 .column {
@@ -248,9 +253,9 @@ body {
   height: 100%;
 }
 
-.searchTeam{
-  margin:-10px 30px;
-}
+/*.searchTeam{*/
+  /*margin:-10px 30px;*/
+/*}*/
 
 #signOut{
   color: #fff;
@@ -273,52 +278,17 @@ body {
 }
 
 .teamName  {
-    color: #009688;
-    font-weight: bold;
-    width: 330px;
-    /* font-size: 1.5rem; */
-    position: fixed;
-    top: 6%;
-    font-family: 'Amatic SC', cursive;
+  color: #fff;
+  font-weight: bold;
+  position: fixed;
+  top: 2%;
+  left: 5%;
+  font-family: "Open Sans";
+  font-weight: lighter;
 }
 
 .subHeader{
   display: flex;
-}
-
-.team button {
-  background: #009688;
-  color: #fff;
-  box-shadow: inset -1px -1px 3px #999;
-  border-radius: 3px;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 3px;    
-  font-weight: bold;
-  animation: fadeIn 2s;    
-  margin-left: 1%;
-  padding: 7px 13px;
-  font-size: 1rem;
-  width: 20rem;
-  height: 2.5rem;
-}
-
-.team button:not(:last-child) {
-    border-bottom: none;
-}
-
-.team button:hover {
-    background-color: #a0a7a6;
-}
-
-.myTeams {
-  margin-top: 2rem;
-}
-
-.teamSearch {
-      width: 30rem;
-    float: left;
-    height: 2rem;
-    display: inline;
 }
 
 .searchedTeam{
@@ -367,9 +337,11 @@ body {
   border-radius: 4px;
   font-weight: bold;
   animation: fadeIn 2s;    
-  width: 8rem;
+  width: 5rem;
   height: 2rem;
   padding: 7px 13px;
-  font-size: 0.9rem;
+  font-size: 0.4rem;
   margin: 0.8rem;
 }
+
+

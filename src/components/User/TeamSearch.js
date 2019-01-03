@@ -29,6 +29,10 @@ class TeamSearch extends React.Component {
     }
     this.clearInputs()
   }
+  
+  hideMessage() {
+    document.querySelector('.searchedTeamcontainer').style.display = 'none';
+  }
 
   render() {
     const { searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, userId } = this.props;
@@ -38,11 +42,15 @@ class TeamSearch extends React.Component {
         <input className={"name"} placeholder={placeholderText} value={this.state.value} onChange={this.handleChange}
           onKeyPress={(event) => this.submitForm(event)} />
         <i className={"fa fa-search"} onClick={this.handleSubmit} />
-        {searchedTeam && <ul id="myUL">
-        <p id="searchedTeam">{searchedTeam}
-            {searchedTeam && <button onClick={() => requestAccess(userId, searchedTeam)} id="submit">Request Access</button>}</p>
-        </ul>}
-        {invalidName ? <p className="invalid-credentials">{errorMessage}</p> : <p className="infoMessage">{infoMessage}</p>}
+        {searchedTeam && 
+          <div className={"searchedTeamcontainer"}>
+            {searchedTeam}<i className="fa fa-caret-right"/>
+            {searchedTeam && 
+            <button type="button" className={"submitButton"} onClick={() => requestAccess(userId, searchedTeam)}>Request Access</button>}
+            </div>
+          }
+        {invalidName && <div className={"searchedTeamcontainer"} onClick={()=>this.hideMessage()}>{errorMessage}</div>}
+        {infoMessage && <div className={"searchedTeamcontainer"} onClick={()=>this.hideMessage()}>{infoMessage}</div>}
       </div>
     )
   };

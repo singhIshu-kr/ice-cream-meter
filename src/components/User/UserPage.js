@@ -67,7 +67,10 @@ class UserPage extends React.Component {
   }
 
   render() {
-    const {activeElement, addNewTeam, userId, teams, getTeamsOfUser, newTeam, getSearchedTeam, searchedTeam, invalidName, errorMessage, requestAccess, infoMessage} = this.props;
+    const {activeElement, addNewTeam, userId, teams, getTeamsOfUser, newTeam, getSearchedTeam, searchedTeam, invalidName, errorMessage, requestAccess, infoMessage, requests} = this.props;
+    const notificationClassName = requests.length > 0 
+      ? "notificationsContainer newNotification" 
+      : "notificationsContainer";
     return (
       <div className="homePage">
         <h1 className="teamName">{"Hi, " + userId.split("@")[0]}</h1>
@@ -80,7 +83,7 @@ class UserPage extends React.Component {
           <div className={"addNewTeamContainer"} onClick={() => this.showPopup("newTeamPopup")}>
             <i className="fa fa-users"/>&nbsp;Add a team
           </div>
-          <div className={"notificationsContainer newNotification"} onClick={() => this.handleNotification()}>
+          <div className={notificationClassName} onClick={() => this.handleNotification()}>
             <i className="fa fa-bell-o"/>&nbsp;Notifications
           </div>
           <div className={"signoutContainer"} onClick={this.signOutTeam}>

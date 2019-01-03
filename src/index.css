@@ -18,6 +18,8 @@ body {
 }
 
 .header-container {
+  position: fixed;
+  width: 100%;
   padding: 1px 0;
   background: rgba(9, 123, 113, 0.86);
 }
@@ -147,6 +149,10 @@ body {
 .teamMembersData{
   display: flex;
 }
+.addMember {
+  margin-bottom: 30px;
+}
+
 .addMember form{
   display: flex;
   justify-content: center;
@@ -305,7 +311,8 @@ body {
 
 .infoMessage {
   color: #009688;
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter !important;
   font-size: 1.1rem;
 }
 
@@ -322,26 +329,48 @@ body {
   display: flex;
 }
 
+.requestsContainer {
+  height: 140px;
+  width: 100%;
+  overflow: scroll;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-size: 13px;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.requests {
+  margin: 5px 0;
+}
+
+.requests:hover{
+  background: rgb(240, 240, 240);
+}
+
+.bolder {
+  font-weight: 600;
+}
+
 #request {
   font-size: 1.1rem;
-    font-weight: bold;
+  font-weight: bold;
   color:#097b71;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 #accessButton {
   color: #fff;
-  box-shadow: inset -1px -1px 3px #999;
-  -moz-box-shadow: inset -1px -1px 3px #999;
   background: #009688;
-  border-radius: 4px;
-  font-weight: bold;
-  animation: fadeIn 2s;    
-  width: 5rem;
-  height: 2rem;
-  padding: 7px 13px;
-  font-size: 0.4rem;
-  margin: 0.8rem;
+  border: none;
+  font-weight: lighter;
+  border-radius: 20px;
+  width: 90px;
+  height: 20px;
 }
 
+#accessButton:hover {
+  cursor: pointer;
+  background: #2aafa2;
+}
 

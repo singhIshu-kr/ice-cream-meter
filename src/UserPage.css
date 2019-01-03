@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
 .secondaryHeader {
+  position: fixed;
+  top:120px;
   width: 100%;
   height: 40px;
   display: flex;
@@ -6,7 +10,7 @@
   align-items: center;
   color: white;
   background: rgba(20, 156, 133, 0.49);
-  font-family: "Open Sans";
+  font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
   font-size: 13px;
 }
@@ -25,6 +29,42 @@
   animation: fadeIn 1.5s;
 }
 
+.searchTeam {
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 3.2;
+}
+
+.searchedTeamcontainer {
+  color: grey;
+  background: #ffffff8c;
+  height: 80px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  animation: fadeIn 2s;
+  font-size: 14px;
+  line-height: 5;
+  overflow: scroll;
+}
+
+.submitButton{
+  padding: 5px 20px;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px !important;
+  font-weight: lighter;
+  background: #238d83;
+  color: #FFFFFF;
+  z-index: 20;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  background: #2aafa2;
+}
+
 .teamsContainer {
   display: flex;
   flex-direction: column;
@@ -32,9 +72,13 @@
 }
 
 .myTeams {
+  box-sizing: border-box;
+  position: relative;
+  top: 80px;
+  height: 500px;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .team button {
@@ -42,12 +86,13 @@
   color: #fff;
   font-weight: lighter;
   padding: 7px 13px;
-  margin: 10px 0;
-  font-size: 1rem;font-family: "Open Sans";
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
   border: none;
   border-radius: 8px;
   width: 20rem;
-  height: 4rem;
+  height: 60px;
+  margin: 5px 0px;
 }
 
 .myTeams button:hover {
@@ -59,11 +104,15 @@
 }
 
 .teamsHeader {
-  margin: 30px 0;
-  font-family: "Open Sans";
+  position: fixed;
+  top: 180px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
   font-size: 30px;
   color: rgba(72, 75, 73, 0.85);
+  z-index: 10;
+  pointer-events: none;
 }
 
 .newNotification {
@@ -86,6 +135,7 @@
   top: 0px;
   left: 0px;
   background: rgba(0, 0, 0, 0.21);
+  z-index: 100;
 }
 
 .popupContainer {
@@ -96,10 +146,10 @@
 }
 
 .title {
-  font-family: "Open Sans";
+  font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
   font-size: 30px;
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .cancel {
@@ -109,7 +159,7 @@
   border: none;
   background: #097b71;
   border-radius: 20px;
-  margin: 20px 13px 20px 0;
+  margin-right: 13px;
 }
 
 .cancel:hover {
@@ -130,6 +180,11 @@
 .fa-search:hover {
   color: #009688;
   cursor: pointer;
+}
+
+.fa-caret-right {
+  color: grey;
+  margin: 0 10px;
 }
 
 .invalid {

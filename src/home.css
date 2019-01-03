@@ -33,7 +33,7 @@
 #submit{
   color: #FFFFFF;
   background: #009688;
-  font-size: 1rem !important;
+  font-size: 1rem;
   margin: 0%;
 }
 
@@ -77,6 +77,11 @@ th, td {
 /* button:nth-child(even) {background-color: #bcebe6;}
 button:nth-child(odd) {background-color: pink;} */
 
-#myUL li a:hover:not(.header) {
-  background-color: #eee;
+main {
+  position: relative;
+  top: 160px;
+  width: 100%;
+  height: 600px;
+  overflow: scroll;
 }
+

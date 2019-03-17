@@ -37,30 +37,38 @@ class AddUserForm extends React.Component {
   }
 
   checkEmptyField(email, password, value) {
-    return (email && password && value) ? this.validateEmail(email) : alert("No field should be empty");
+    if (email && password && value) {
+      return this.validateEmail(email)
+    }
+    this.props.displayError("No fields should be empty")
+    return false;
   }
 
   validateEmail(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return (true)
     }
-    alert("Invalid email format");
+    this.props.displayError("Invalid email format")
     return (false)
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, hasError, errorMessage} = this.props;
+    // console.log(this.props)
     if (isLoggedIn) {
       return <Redirect to={{ pathname: '/profile', state: { teamId: this.state.email } }} />
     }
     return (
       <div>
+        {hasError && <p className="invalid-credentials">{errorMessage}</p>}
+        <label>
         <div>
           <input type="text" id="userName" placeholder="User Name" value={this.state.value} onChange={this.handleChange} />
             <input type="email" id="email" placeholder="Email" value={this.state.email} onChange={this.setEmail} required/>
           <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.setPassword} onKeyPress={(event)=>this.submitForm(event)}/>
           <input id="submit" type="submit" value="Submit" onClick={this.handleSubmit} />
         </div>
+        </label>
       </div>
     );
   }

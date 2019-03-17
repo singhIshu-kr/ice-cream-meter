@@ -28,7 +28,7 @@ class HomePage extends React.Component {
     return (
       <div className="formContainer">
       <div class="form" >
-        <div id="addUser"><AddUser addUserAndPassword={addUser} isLoggedIn={isLoggedIn} /></div>
+        <div id="addUser"><AddUser addUserAndPassword={addUser} isLoggedIn={isLoggedIn} hasError={hasError} errorMessage={errorMessage} displayError={displayError}/></div>
         <p>or</p>
         <a onClick={() => toggleLogin()} id="teamLink">Go to Login page</a>
         </div>

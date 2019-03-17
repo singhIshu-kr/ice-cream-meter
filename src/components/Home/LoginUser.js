@@ -29,7 +29,6 @@ class LoginTeamForm
 
   handleSubmit() {
     const {email,password} = this.state;
-    console.log(this.checkEmptyField(email, password),"enkf,mdsafnkl")
     return this.checkEmptyField(email, password) && this.props.loginTeam(email,password);
   }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
-import AddMember from '../../src/components/Home/addUser'
+import AddUser from '../../src/components/Home/AddUser'
 import td from 'testdouble'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('Add Team',()=>{
   it('should call add team and password', () => {
     const addUserAndPassword = td.function();
-    const addMember = shallow(<AddMember addUserAndPassword={addUserAndPassword} isLoggedIn={false}/>);
+    const addMember = shallow(<AddUser addUserAndPassword={addUserAndPassword} isLoggedIn={false}/>);
     let name = addMember.find('#userName');
     let password = addMember.find('#password');
     let email = addMember.find('#email');

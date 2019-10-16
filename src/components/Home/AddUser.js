@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-class AddUserForm extends React.Component {
+class AddUser extends React.Component {
   
   constructor(props) {
     super(props);
@@ -74,4 +74,4 @@ class AddUserForm extends React.Component {
   }
 }
 
-export default AddUserForm;
+export default AddUser;

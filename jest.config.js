@@ -10,5 +10,5 @@ module.exports = {
         '^@/(.*)$': '<rootDir>/src/$1'
     },
     snapshotSerializers: ['jest-serializer-vue'],
-    transformIgnorePatterns: ['<rootDir>/node_modules/']
+    transformIgnorePatterns: ["/node_modules/(?!vue-awesome)"]
 };

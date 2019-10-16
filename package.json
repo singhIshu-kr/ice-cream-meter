@@ -29,17 +29,20 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "6.24.1",
-    "jest": "23.6.0",
-    "react-test-renderer": "16.5.2",
-    "babel-plugin-transform-runtime": "6.23.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "23.6.0",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
+    "react-test-renderer": "16.5.2",
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "sinon": "5.0.7",
-    "testdouble": "^3.8.1"
+    "testdouble": "^3.8.1",
+    "vue-jest": "^3.0.5"
   },
   "jest": {
     "roots": [

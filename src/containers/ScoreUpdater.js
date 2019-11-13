@@ -1,6 +1,6 @@
 import TeamBar from '../components/Team/TeamBar';
 import { connect } from 'react-redux';
-import { addScore, addMember,removeMember, decreaseScore,getSavedState,resetScore, signOutTeam} from '../actions/index';
+import teamActions from "../actions/teamActions";
 
 const mapStateToProps = (state) => {
   return ({
@@ -13,15 +13,17 @@ const mapStateToProps = (state) => {
 }
 
 
-const mapDispatchToProps = dispatch =>({
-  fetchTeamInfo : (teamId) => getSavedState(dispatch,teamId),
-  addScore : (id,teamId)=>addScore(dispatch,id,teamId),
-  decreaseScore: (id,teamId) => decreaseScore(dispatch,id,teamId),
-  addMember : (name,teamId) => addMember(dispatch,name,teamId),
-  removeMember : (id, teamId)=> removeMember(dispatch,id, teamId),
-  resetScore : (id,teamId)=> resetScore(dispatch,id,teamId),
-  signOutTeam : (id)=> signOutTeam(dispatch,id)
-})
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    fetchTeamInfo: (teamId) => dispatch(teamActions.getSavedState(teamId)),
+    addScore: (id, teamId) => dispatch(teamActions.addScore(id, teamId)),
+    decreaseScore: (id, teamId) => dispatch(teamActions.decreaseScore(id, teamId)),
+    addMember: (name, teamId) => dispatch(teamActions.addMember(name, teamId)),
+    removeMember: (id, teamId) => dispatch(teamActions.removeMember(id, teamId)),
+    resetScore: (id, teamId) => dispatch(teamActions.removeMember(id, teamId)),
+    signOutTeam: (id) => dispatch(teamActions.removeMember(id))
+  })
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(TeamBar)
 

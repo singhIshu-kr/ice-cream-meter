@@ -3,11 +3,9 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {spy, stub} from 'sinon';
-import Container from '../../src/containers/ScoreUpdater';
+import ScoreUpdater from '../../src/containers/ScoreUpdater';
 import teamActions from "../../src/actions/teamActions";
-import HomePageContainer from "../../src/containers/HomeContainer";
-import HomePage from "../../src/components/Home/Home";
-import userActions from "../../src/actions/userActions";
+import TeamPage from "../../src/components/Team/TeamBar";
 
 const addScoreAction = { type : "addScoreMock" };
 const decreaseScoreAction = { type : "decreaseScoreMock" };
@@ -21,33 +19,26 @@ teamActions.decreaseScore = jest.fn(() => (decreaseScoreAction));
 teamActions.resetScore = jest.fn(() => (resetScoreAction));
 teamActions.addMember = jest.fn(() => (addMemberAction));
 teamActions.removeMember = jest.fn(() => (removeMemberAction));
-teamActions.getSavedState = jest.fn(() => (getSavedStateAction));
+teamActions.fetchTeamInfo = jest.fn(() => (getSavedStateAction));
 
 Enzyme.configure({ adapter: new Adapter() })
-
-const mockStore = configureStore();
-const dispatch = spy();
 
 describe('Score Update Container', () => {
   const store = {
     meterUpdaters: {
-      teamInfo: ,
-      teamId: state.meterUpdaters.teamId,
-      nameInUse: state.meterUpdaters.nameInUse,
-      teamName: state.meterUpdaters.teamName,
-      userType
-      : true,
-      isLoggedIn: true,
-      hasError: true,
-      errorMessage: 'Error Message'
+      teamInfo: [],
+      teamId: "1234",
+      nameInUse: "Magneto",
+      teamName: "WonderWoman",
+      userType: "ADMIN"
     }
   };
+
   const mockStore = configureStore()(store);
   const dispatchMock = jest.fn();
   mockStore.dispatch = dispatchMock;
-  const wrapper = shallow(<HomePageContainer store={mockStore}/>);
-  const component = wrapper.find(HomePage);
-
+  const wrapper = shallow(<ScoreUpdater store={mockStore}/>);
+  const component = wrapper.find(TeamPage);
 
   beforeEach(() => {
     dispatchMock.mockClear();
@@ -55,138 +46,85 @@ describe('Score Update Container', () => {
 
   it('should map state to props', () => {
     const props = component.props();
-
-    expect(props.showLogin).toBe(true);
-    expect(props.isLoggedIn).toBe(true);
-    expect(props.hasError).toBe(true);
-    expect(props.errorMessage).toBe('Error Message');
+    console.log(props);
+    expect(props.teamInfo).toEqual([]);
+    expect(props.teamId).toBe("1234");
+    expect(props.nameInUse).toBe("Magneto");
+    expect(props.teamName).toBe("WonderWoman");
+    expect(props.userType).toBe("ADMIN");
   });
 
   describe('map dispatch to props', () => {
-    it('should dispatch loginTeam', () => {
-      const name = 'name';
-      const password = 'password';
 
-      wrapper.prop('loginTeam')(name, password);
+    it('should dispatch addScore', () => {
+      const id = '1234';
+      const teamId = 't123';
 
-      expect(dispatchMock).toHaveBeenCalledTimes(1);
-      expect(dispatchMock).toHaveBeenCalledWith(loginTeamAction);
-      expect(userActions.loginTeam).toHaveBeenCalledTimes(1);
-      expect(userActions.loginTeam).toHaveBeenCalledWith(name, password);
-    });
-
-    it('should dispatch addUser with passed props', () => {
-      const name = 'abc';
-      const email = 'net.com';
-      const password = '1234';
-
-      wrapper.prop('addUser')(name, email, password);
+      wrapper.prop('addScore')(id, teamId);
 
       expect(dispatchMock).toHaveBeenCalledTimes(1);
-      expect(dispatchMock).toHaveBeenCalledWith(addUserAction);
-      expect(userActions.addUser).toHaveBeenCalledTimes(1);
-      expect(userActions.addUser).toHaveBeenCalledWith(name, email, password);
+      expect(dispatchMock).toHaveBeenCalledWith(addScoreAction);
+      expect(teamActions.addScore).toHaveBeenCalledTimes(1);
+      expect(teamActions.addScore).toHaveBeenCalledWith(id, teamId);
     });
 
-    it('should dispatch toggleLogin', () => {
-      wrapper.prop('toggleLogin')();
+    it('should dispatch decreaseScore', () => {
+      const id = '1234';
+      const teamId = 't123';
+
+      wrapper.prop('decreaseScore')(id, teamId);
 
       expect(dispatchMock).toHaveBeenCalledTimes(1);
-      expect(dispatchMock).toHaveBeenCalledWith(toggleLoginAction);
-      expect(userActions.toggleLogin).toHaveBeenCalledTimes(1);
-      expect(userActions.toggleLogin).toHaveBeenCalledWith();
+      expect(dispatchMock).toHaveBeenCalledWith(decreaseScoreAction);
+      expect(teamActions.decreaseScore).toHaveBeenCalledTimes(1);
+      expect(teamActions.decreaseScore).toHaveBeenCalledWith(id, teamId);
     });
 
-    it('should dispatch checkLoggedIn', () => {
-      wrapper.prop('checkLoggedIn')();
+    it('should dispatch addMember', () => {
+      const name = 'salman';
+      const teamId = 't123';
+
+      wrapper.prop('addMember')(name, teamId);
 
       expect(dispatchMock).toHaveBeenCalledTimes(1);
-      expect(dispatchMock).toHaveBeenCalledWith(checkLoggedInAction);
-      expect(userActions.checkLoggedIn).toHaveBeenCalledTimes(1);
-      expect(userActions.checkLoggedIn).toHaveBeenCalledWith();
+      expect(dispatchMock).toHaveBeenCalledWith(addMemberAction);
+      expect(teamActions.addMember).toHaveBeenCalledTimes(1);
+      expect(teamActions.addMember).toHaveBeenCalledWith(name, teamId);
     });
 
-    it('should dispatch displayError with applied message', () => {
-      let errorMessage = 'Error Message';
-      wrapper.prop('displayError')(errorMessage);
+    it('should dispatch removeMember', () => {
+      const id = '1234';
+      const teamId = 't123';
+
+      wrapper.prop('removeMember')(id, teamId);
 
       expect(dispatchMock).toHaveBeenCalledTimes(1);
-      expect(dispatchMock).toHaveBeenCalledWith(displayErrorAction);
-      expect(userActions.displayError).toHaveBeenCalledTimes(1);
-      expect(userActions.displayError).toHaveBeenCalledWith(errorMessage);
-    });
-  });
-});
-
-
-describe('Score Update Container', () => {
-  let wrapper, store;
-
-  beforeEach(() => {
-    store = mockStore({meterUpdaters:{team:[]}})
-    store.dispatch = dispatch;
-    wrapper = shallow(<Container store={store} />)  
-  });
-
-  afterEach(() => {
-    store.dispatch = null;
-  });
-
-  describe('map State to Props', () => {
-    it('should map state and dispatch to props', () => {
-      expect(wrapper.props()).toEqual(expect.objectContaining({
-        teamInfo:[],
-        fetchTeamInfo:expect.any(Function),
-        addScore: expect.any(Function),
-        decreaseScore: expect.any(Function),
-        addMember: expect.any(Function),
-        removeMember: expect.any(Function),
-        resetScore: expect.any(Function),
-      }))
-    });
-  });
-
-  describe('map Dispatch to props', () => {
-    it('should fetch team Info', () => {
-      const stubFetchTeamInfo = stub(actions,'getSavedState');
-      wrapper.prop('fetchTeamInfo')();
-      expect(stubFetchTeamInfo.calledOnce).toBeTruthy();
-      expect(stubFetchTeamInfo.calledWith(dispatch)).toBeTruthy();
-    });  
-
-    it('should add Score', () => {
-      const stubbedAddScore = stub(actions,'addScore');
-      wrapper.prop('addScore')(1);
-      expect(stubbedAddScore.calledOnce).toBeTruthy();
-      expect(stubbedAddScore.calledWith(dispatch,1)).toBeTruthy();
+      expect(dispatchMock).toHaveBeenCalledWith(removeMemberAction);
+      expect(teamActions.removeMember).toHaveBeenCalledTimes(1);
+      expect(teamActions.removeMember).toHaveBeenCalledWith(id, teamId);
     });
 
-    it('should decrease score', () => {
-      const stubDecreaseScore = stub(actions, 'decreaseScore');
-      wrapper.prop('decreaseScore')(1);
-      expect(stubDecreaseScore.calledOnce).toBeTruthy();
-      expect(stubDecreaseScore.calledWith(dispatch,1)).toBeTruthy();
+    it('should dispatch resetScore', () => {
+      const id = '1234';
+      const teamId = 't123';
+
+      wrapper.prop('resetScore')(id, teamId);
+
+      expect(dispatchMock).toHaveBeenCalledTimes(1);
+      expect(dispatchMock).toHaveBeenCalledWith(resetScoreAction);
+      expect(teamActions.resetScore).toHaveBeenCalledTimes(1);
+      expect(teamActions.resetScore).toHaveBeenCalledWith(id, teamId);
     });
 
-    it('should add member ', () => {
-      const stubAddMember = stub(actions, 'addMember');
-      wrapper.prop('addMember')("ishu");
-      expect(stubAddMember.calledOnce).toBeTruthy();
-      expect(stubAddMember.calledWith(dispatch,"ishu")).toBeTruthy();
-    });
+    it('should dispatch getSavedState', () => {
+      const id = '1234';
 
-    it('should remove member', () => {
-      const stubRemoveMember = stub(actions, 'removeMember');
-      wrapper.prop('removeMember')(1);
-      expect(stubRemoveMember.calledOnce).toBeTruthy();
-      expect(stubRemoveMember.calledWith(dispatch,1)).toBeTruthy();
-    });
+      wrapper.prop('fetchTeamInfo')(id);
 
-    it('should reset score', () => {
-      const stubResetScore = stub(actions, 'resetScore');
-      wrapper.prop('resetScore')(1);
-      expect(stubResetScore.calledOnce).toBeTruthy();
-      expect(stubResetScore.calledWith(dispatch,1)).toBeTruthy();
+      expect(dispatchMock).toHaveBeenCalledTimes(1);
+      expect(dispatchMock).toHaveBeenCalledWith(getSavedStateAction);
+      expect(teamActions.fetchTeamInfo).toHaveBeenCalledTimes(1);
+      expect(teamActions.fetchTeamInfo).toHaveBeenCalledWith(id);
     });
   });
 });

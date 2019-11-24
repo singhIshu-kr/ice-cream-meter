@@ -1,4 +1,4 @@
-import TeamBar from "../containers/ScoreUpdater";
+import TeamBar from "../containers/TeamContainer";
 import Home from "../containers/HomeContainer";
 import UserPage from "../containers/UserPage"
 import {BrowserRouter, Route} from "react-router-dom";

@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import UserPage from "../components/User/UserPage"
-import { addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess, getAccessRequests, permitAccess} from "../actions/index"
+import { addNewTeam, getTeamsOfUser, signOutTeam, getSearchedTeam, requestAccess, getAccessRequests, permitAccess} from "../actions/userActions"
 import cookie from 'react-cookies';
 
 const mapStateToProps = (state) => {

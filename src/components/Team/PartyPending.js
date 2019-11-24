@@ -32,7 +32,7 @@ class PartyPending extends React.Component{
               pendingList.map(member => (
                 <li key={member.id}>
                   <span id="memberName" className="memberName">{member.name}</span>
-                  <button className="resetScore" id="resetScore" onClick={() => resetScore(member.id, member.teamID)}>Reset</button>
+                  <button className="resetScore" id="resetScore" onClick={() =>  resetScore(member.id, member.teamID)}>Reset</button>
                 </li>
               ))
             }

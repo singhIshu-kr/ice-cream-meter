@@ -2,37 +2,57 @@ import {axiosInstance as axios} from "../axios-wrapper/axios.config";
 import cookie from "react-cookies";
 
 export const addScore = (id, teamId) => (dispatch) => {
-    let body = { id, teamId };
-    return axios.post('addScore', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    let body = {id, teamId};
+    return axios.post('addScore', body, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
+        }
+    }).then((res) => {
         if (res.status === 200) {
-            return fetchTeamInfo(dispatch, teamId)
+            return fetchTeamInfo(teamId)(dispatch);
         }
     })
 }
 
 export const decreaseScore = (id, teamId) => (dispatch) => {
-    let body = { id, teamId };
-    return axios.post('reduceScore', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    let body = {id, teamId};
+    return axios.post('reduceScore', body, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
+        }
+    }).then((res) => {
         if (res.status === 200) {
-            return fetchTeamInfo(dispatch, teamId);
+            return fetchTeamInfo(teamId)(dispatch);
         }
     })
 }
 
 export const resetScore = (id, teamId) => (dispatch) => {
-    let body = { id };
-    return axios.post('reset-score', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    let body = {id};
+    return axios.post('reset-score', body, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
+        }
+    }).then((res) => {
         if (res.status === 200) {
-            return fetchTeamInfo(dispatch, teamId);
+            return fetchTeamInfo(teamId)(dispatch);
         }
     })
 }
 
 export const addMember = (name, teamId) => (dispatch) => {
-    let body = { name, teamId };
-    return axios.post('addMember', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
+    let body = {name, teamId};
+    return axios.post('addMember', body, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
+        }
+    }).then((res) => {
         if (res.status === 200) {
-            return fetchTeamInfo(dispatch, teamId);
+            return fetchTeamInfo(teamId)(dispatch);
         }
 
     }).catch((error) => {
@@ -48,16 +68,27 @@ export const addMember = (name, teamId) => (dispatch) => {
 }
 
 export const removeMember = (id, teamId) => (dispatch) => {
-    let body = { id };
-    return axios.post('/remove', body, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
-        if (res.status === 200) {
-            return fetchTeamInfo(dispatch, teamId);
+    let body = {id};
+    return axios.post('/remove', body, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
         }
     })
+        .then((res) => {
+            if (res.status === 200) {
+                return fetchTeamInfo(teamId)(dispatch);
+            }
+        })
 }
 
 export const fetchTeamInfo = (teamId) => (dispatch) => {
-    return axios.get(`/read/${teamId}`, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } })
+    return axios.get(`/read/${teamId}`, {
+        headers: {
+            accesstoken: cookie.load('accessToken'),
+            email: cookie.load('email')
+        }
+    })
         .then((response) => {
             return dispatch(
                 {

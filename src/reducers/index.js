@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import meterUpdaters from './meterUpdater';
+import meterUpdaters from './teamPage';
 import homePage from './homePage';
 import userPage from './userPage'
 

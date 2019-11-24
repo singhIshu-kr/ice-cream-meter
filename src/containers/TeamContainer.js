@@ -1,6 +1,7 @@
 import TeamBar from '../components/Team/TeamBar';
 import { connect } from 'react-redux';
 import teamActions from "../actions/teamActions";
+import userActions from "../actions/userActions";
 
 const mapStateToProps = (state) => {
   return ({
@@ -20,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     decreaseScore: (id, teamId) => dispatch(teamActions.decreaseScore(id, teamId)),
     addMember: (name, teamId) => dispatch(teamActions.addMember(name, teamId)),
     removeMember: (id, teamId) => dispatch(teamActions.removeMember(id, teamId)),
-    resetScore: (id, teamId) => dispatch(teamActions.removeMember(id, teamId)),
-    signOutTeam: (id) => dispatch(teamActions.removeMember(id))
+    resetScore: (id, teamId) => dispatch(teamActions.resetScore(id, teamId)),
+    signOutTeam: () => dispatch(userActions.signOutTeam())
   })
 };
 

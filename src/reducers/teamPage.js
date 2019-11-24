@@ -1,4 +1,4 @@
-const meterUpdater = (state = { teamInfo: [], teamID: "", nameInUse: false, teamName: null, userType: undefined}, action) => {
+const teamPage = (state = { teamInfo: [], teamID: "", nameInUse: false, teamName: null, userType: undefined}, action) => {
   switch (action.type) {
     case 'SET_TEAM':
       return {
@@ -26,4 +26,4 @@ const meterUpdater = (state = { teamInfo: [], teamID: "", nameInUse: false, team
   }
 }
 
-export default meterUpdater;
+export default teamPage;

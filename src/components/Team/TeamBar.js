@@ -16,7 +16,7 @@ class TeamBar extends React.Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { fetchTeamInfo } = this.props;
     const { teamId } = this.props.location.state || this.props;
     teamId && fetchTeamInfo(teamId);

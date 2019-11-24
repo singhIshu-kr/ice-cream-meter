@@ -1,4 +1,4 @@
-import meterUpdater from '../../src/reducers/meterUpdater'
+import teamPage from '../../src/reducers/teamPage'
 
 const types = {
   SET_TEAM: "SET_TEAM",
@@ -9,7 +9,7 @@ const types = {
 
 describe('reducer',()=>{
   it('should return the updated team', () => {
-    expect(meterUpdater({ team: [] }, {
+    expect(teamPage({ team: [] }, {
       type: types.SET_TEAM,
       payload: []
     })).toEqual(
@@ -18,17 +18,17 @@ describe('reducer',()=>{
   })
 
   it('should return initial state as default', () => {
-    expect(meterUpdater(undefined, { type: types.ABC }))
+    expect(teamPage(undefined, { type: types.ABC }))
     .toEqual({ "nameInUse": false, "team": [], "teamID": "", "teamName": null })
   });
 
   it('should return make the email undefined on signout team action', () => {
     const state = { nameInUse:false,email:"abc" };
-    expect(meterUpdater(state, { type: types.SIGNOUT_TEAM })).toEqual({ "nameInUse": false, email:undefined})
+    expect(teamPage(state, { type: types.SIGNOUT_TEAM })).toEqual({ "nameInUse": false, email:undefined})
   });
 
   it('should return name in use as true on the name in use action', () => {
     const state = { nameInUse: false, email: "abc" };
-    expect(meterUpdater(state, { type: types.NAME_IN_USE })).toEqual({ "nameInUse": true, email: "abc" })
+    expect(teamPage(state, { type: types.NAME_IN_USE })).toEqual({ "nameInUse": true, email: "abc" })
   });
 })

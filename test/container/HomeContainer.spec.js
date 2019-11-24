@@ -4,7 +4,7 @@ import React from 'react';
 import HomePageContainer from '../../src/containers/HomeContainer';
 import Adapter from 'enzyme-adapter-react-16';
 import HomePage from "../../src/components/Home/Home";
-import userActions from "../../src/actions/userActions";
+import appActions from "../../src/actions/appActions";
 
 const loginTeamAction = {type: 'loginTeamMock'};
 const addUserAction = {type: 'addUserMock'};
@@ -12,11 +12,11 @@ const toggleLoginAction = {type: 'toggleLoginMock'};
 const checkLoggedInAction = {type: 'checkLoggedInMock'};
 const displayErrorAction = {type: 'displayErrorMock'};
 
-userActions.loginTeam = jest.fn(() => (loginTeamAction));
-userActions.addUser = jest.fn(() => (addUserAction));
-userActions.toggleLogin = jest.fn(() => (toggleLoginAction));
-userActions.checkLoggedIn = jest.fn(() => (checkLoggedInAction));
-userActions.displayError = jest.fn(() => (displayErrorAction));
+appActions.loginTeam = jest.fn(() => (loginTeamAction));
+appActions.addUser = jest.fn(() => (addUserAction));
+appActions.toggleLogin = jest.fn(() => (toggleLoginAction));
+appActions.checkLoggedIn = jest.fn(() => (checkLoggedInAction));
+appActions.displayError = jest.fn(() => (displayErrorAction));
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -58,8 +58,8 @@ describe('HomePage Container', () => {
 
             expect(dispatchMock).toHaveBeenCalledTimes(1);
             expect(dispatchMock).toHaveBeenCalledWith(loginTeamAction);
-            expect(userActions.loginTeam).toHaveBeenCalledTimes(1);
-            expect(userActions.loginTeam).toHaveBeenCalledWith(name, password);
+            expect(appActions.loginTeam).toHaveBeenCalledTimes(1);
+            expect(appActions.loginTeam).toHaveBeenCalledWith(name, password);
         });
 
         it('should dispatch addUser with passed props', () => {
@@ -71,8 +71,8 @@ describe('HomePage Container', () => {
 
             expect(dispatchMock).toHaveBeenCalledTimes(1);
             expect(dispatchMock).toHaveBeenCalledWith(addUserAction);
-            expect(userActions.addUser).toHaveBeenCalledTimes(1);
-            expect(userActions.addUser).toHaveBeenCalledWith(name, email, password);
+            expect(appActions.addUser).toHaveBeenCalledTimes(1);
+            expect(appActions.addUser).toHaveBeenCalledWith(name, email, password);
         });
 
         it('should dispatch toggleLogin', () => {
@@ -80,8 +80,8 @@ describe('HomePage Container', () => {
 
             expect(dispatchMock).toHaveBeenCalledTimes(1);
             expect(dispatchMock).toHaveBeenCalledWith(toggleLoginAction);
-            expect(userActions.toggleLogin).toHaveBeenCalledTimes(1);
-            expect(userActions.toggleLogin).toHaveBeenCalledWith();
+            expect(appActions.toggleLogin).toHaveBeenCalledTimes(1);
+            expect(appActions.toggleLogin).toHaveBeenCalledWith();
         });
 
         it('should dispatch checkLoggedIn', () => {
@@ -89,8 +89,8 @@ describe('HomePage Container', () => {
 
             expect(dispatchMock).toHaveBeenCalledTimes(1);
             expect(dispatchMock).toHaveBeenCalledWith(checkLoggedInAction);
-            expect(userActions.checkLoggedIn).toHaveBeenCalledTimes(1);
-            expect(userActions.checkLoggedIn).toHaveBeenCalledWith();
+            expect(appActions.checkLoggedIn).toHaveBeenCalledTimes(1);
+            expect(appActions.checkLoggedIn).toHaveBeenCalledWith();
         });
 
         it('should dispatch displayError with applied message', () => {
@@ -99,8 +99,8 @@ describe('HomePage Container', () => {
 
             expect(dispatchMock).toHaveBeenCalledTimes(1);
             expect(dispatchMock).toHaveBeenCalledWith(displayErrorAction);
-            expect(userActions.displayError).toHaveBeenCalledTimes(1);
-            expect(userActions.displayError).toHaveBeenCalledWith(errorMessage);
+            expect(appActions.displayError).toHaveBeenCalledTimes(1);
+            expect(appActions.displayError).toHaveBeenCalledWith(errorMessage);
         });
     });
 });

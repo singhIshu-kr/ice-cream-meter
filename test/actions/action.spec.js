@@ -1,8 +1,8 @@
 import td from 'testdouble'
 import { axiosInstance as axios } from '../../src/axios-wrapper/axios.config';
 import MockAdapter from 'axios-mock-adapter'
-import * as actions from '../../src/actions/index'
-import userActions from "../../src/actions/userActions";
+import * as actions from '../../src/actions/userActions'
+import appActions from "../../src/actions/appActions";
 
 describe('Should dispatch all the actions', () => {
   const mockAdapter = new MockAdapter(axios);
@@ -272,7 +272,7 @@ describe('Should dispatch all the actions', () => {
         type: "LOGIN_TEAM"
       }
 
-      userActions.addUser(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
+      appActions.addUser(dispatch, "Ishu", "abcd@gmail.com", "1234").then(() => {
         td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })
@@ -289,7 +289,7 @@ describe('Should dispatch all the actions', () => {
         email: "abcd@gmail.com"
       }
 
-      dispatch(userActions.addUser("Ishu", "abcd@gmail.com", "1234"), () => {
+      dispatch(appActions.addUser("Ishu", "abcd@gmail.com", "1234"), () => {
         td.verify(dispatch(expectedAction), { times: 0 })
         done();
       })
@@ -301,7 +301,7 @@ describe('Should dispatch all the actions', () => {
       const expectedAction = {
         type: "TOGGLE_LOGIN"
       }
-      expect(userActions.toggleLogin()).toEqual(expectedAction);
+      expect(appActions.toggleLogin()).toEqual(expectedAction);
       done()
     });
   });
@@ -320,7 +320,7 @@ describe('Should dispatch all the actions', () => {
       });
       
       const dispatch = td.function();
-      userActions.loginTeam(dispatch,"abcd@gmail.com","abcd").then(() => {
+      appActions.loginTeam(dispatch,"abcd@gmail.com","abcd").then(() => {
         td.verify(dispatch(expectedAction), { times: 1})
         done();
       }) 
@@ -340,7 +340,7 @@ describe('Should dispatch all the actions', () => {
       });
 
       const dispatch = td.function();
-      userActions.loginTeam(dispatch, "abcd@gmail.com", "abcd").then(() => {
+      appActions.loginTeam(dispatch, "abcd@gmail.com", "abcd").then(() => {
         td.verify(dispatch(expectedAction), { times: 1 })
         done();
       })
@@ -356,7 +356,7 @@ describe('Should dispatch all the actions', () => {
       const expectedAction = {
         type: "IS_LOGGED_IN"
       }
-      userActions.checkLoggedIn(dispatch).then(()=>{
+      appActions.checkLoggedIn(dispatch).then(()=>{
         td.verify(dispatch(expectedAction),{times:1})
         done();
       })

@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     addNewTeam : (userId, teamId) => addNewTeam(dispatch, userId, teamId),
     getTeamsOfUser :(userId) => getTeamsOfUser(dispatch, userId),
-    signOutUser: (id) => signOutTeam(dispatch, id),
+    signOutUser: (id) => signOutTeam(dispatch),
     getSearchedTeam: (id) => getSearchedTeam(dispatch, id),
     requestAccess:(userId, teamName) => requestAccess(dispatch, userId, teamName),
     getAccessRequests: (userId) => getAccessRequests(dispatch, userId),

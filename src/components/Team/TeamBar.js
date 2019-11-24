@@ -23,7 +23,7 @@ class TeamBar extends React.Component {
   }
 
   signOutTeam() {
-    this.props.signOutTeam(this.props.email);
+    this.props.signOutTeam();
     window.location.href = "/home"
   }
 

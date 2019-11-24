@@ -1,7 +1,7 @@
 import {axiosInstance as axios} from '../axios-wrapper/axios.config';
 import cookie from 'react-cookies';
 
-export const signOutTeam = () => {
+export const signOutTeam = () => () => {
   return axios.post('/signOutUser', {}, { headers: { accesstoken: cookie.load('accessToken'), email: cookie.load('email') } }).then((res) => {
     if (res.status === 200) {
       cookie.remove("email", { path: "/" });
